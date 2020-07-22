@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box ;
+}
+
+/*  overflow auto y scroll snap----https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type  */
+/*  https://developers.giphy.com/docs/resource/#code-examples  */
+body {
+    font-family: Montserrat ,sans-serif; ;
+}
+main {
+    background-color: white;
+}
+.busca_gifos {
+    display: flex;
+    flex-direction: column;
+}
+.busca_gifos h1 {
+    font-family: Montserrat ,sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    color: #572EE5;
+    text-align: center;
+    line-height: 33px;
+    margin-top: 7px;
+    margin-bottom: 31px;
+    margin-right: 12vw;
+    margin-left: 12vw;
+}
+.busca_gifos span {
+    color: #50E3C2;
+}
+.busca_gifos #ilustra {
+    display:block;
+    margin:auto;
+    width: 273px;
+    height: 130px;
+}
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    width: 334px;
+    height: auto;
+    border-radius: 27px;
+    border: solid 1px #572EE5;
+}
+.flex .busca_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.busca_container input {
+    border: none;
+    outline: none;
+    padding : 10px 30px 10px 5px;
+    font-size: 16px;
+}
+
+.busca_container #search {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transform: translateX(10px);
+}
+/*ESTE BOX SE ACTIVA PARA LAS SUGERENCIAS DE BUSQUEDA*/
+.sugerencias_box {
+    width: 334px;
+    padding-bottom: 14px;
+    display: none;  /* <--------- ESTE !! */
+}
+.sugerencias {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 30px;
+}
+.sugerencias p{
+    color: #9CAFC3;
+    line-height: 25px;
+    margin-top: 10px;
+}
+.sugerencias img {
+    height: 15.8px;
+    width: 15.8px;
+    margin-right: 25px;
+}
+
+/*ESTA LUPA APARECE AL TIPEAR*/
+.lupanueva {
+    display: none;  /* <--------- ESTA !! */
+}
+.trendings {
+    width: 225px;
+    margin: auto;
+    margin-top: 31px;
+}
+.trendings h2{
+    font-family: Montserrat ,sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #572EE5;
+    text-align: center;
+    line-height: 25px;
+}
+.trendings p{
+    font-family: Montserrat ,sans-serif;
+    font-size: 14px;
+    color: #572EE5;
+    text-align: center;
+    line-height: 25px;
+}
+
+.displayBlocker {
+    display: block;
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width: 480px){
+}
+@media screen and (min-width: 768px){
+}
+@media screen and (min-width: 1024px){
+}

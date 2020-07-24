@@ -12,6 +12,9 @@ body {
 main {
     background-color: white;
 }
+object {
+    pointer-events: none;
+}
 .busca_gifos {
     display: flex;
     flex-direction: column;
@@ -65,6 +68,7 @@ main {
     cursor: pointer;
     transform: translateX(10px);
 }
+
 /*ESTE BOX SE ACTIVA PARA LAS SUGERENCIAS DE BUSQUEDA*/
 .sugerencias_box {
     width: 334px;
@@ -83,16 +87,19 @@ main {
     line-height: 25px;
     margin-top: 10px;
 }
-.sugerencias img {
-    height: 15.8px;
-    width: 15.8px;
-    margin-right: 25px;
+.sugerencias svg {
+    margin-right: 20px;
+    margin-top: 10px;
+}
+#lupachica {
+    fill: #9CAFC3;
 }
 
 /*ESTA LUPA APARECE AL TIPEAR*/
 .lupanueva {
     display: none;  /* <--------- ESTA !! */
 }
+
 .trendings {
     width: 225px;
     margin: auto;
@@ -113,14 +120,46 @@ main {
     text-align: center;
     line-height: 25px;
 }
+/*ESTA REEMPLAZA A TRENDINGS AL TIPEAR EL INPUT*/
+.cutLine {
+    width: 338px;
+    height: 1px;
+    background-color: #9CAFC3 ;
+    border-radius: 10px;
+    margin: auto;
+    display: none;
+    margin-top: 55px;
+}
 
-.displayBlocker {
-    display: block;
+/*GRID DE RESULTADOS x12 --MODO MOBILE */
+#tituloBusqueda {
+    text-align: center;
+    margin-top: 43px;
+    margin-bottom: 38px;
+    color: #572EE5;
+}
+.resultados {
+    display: grid;
+    margin: auto;
+    grid-column-gap: 21px;
+    grid-row-gap: 21px;
+    grid-template-columns: auto auto ;
+    width: 89vw;
+}
+.resultados .grid-item {
+    width: 100%;
+    height: auto;
+} 
+.resultados img {
+    width: 100%;
 }
 
 
 
 
+
+footer .redes .icon:hover #ig, footer  .redes .icon:hover #face, footer  .redes .icon:hover #tr {
+    fill: #572EE5; }
 
 
 
@@ -128,6 +167,49 @@ main {
 @media screen and (min-width: 480px){
 }
 @media screen and (min-width: 768px){
+
+    #tituloBusqueda{
+        margin: auto;
+        margin-top: 82px;
+        margin-bottom: 60px;
+        font-size: 35px;
+        line-height: 30px;
+    }
+    .resultados {
+        display: grid;
+        margin: auto;
+        grid-column-gap: 29px;
+        grid-row-gap: 29px;
+        grid-template-columns: auto auto auto ;
+        width: 78vw;
+    }
 }
+
 @media screen and (min-width: 1024px){
+
+    /*GRID DE RESULTADOS x12 --MODO DESKTOP */
+    #tituloBusqueda{
+        margin: auto;
+        margin-top: 82px;
+        margin-bottom: 60px;
+        font-size: 35px;
+        line-height: 30px;
+    }
+    .resultados {
+        display: grid;
+        margin: auto;
+        grid-column-gap: 29px;
+        grid-row-gap: 29px;
+        grid-template-columns: auto auto auto auto;
+        width: 78vw;
+    }
+}
+
+/* USADO PARA APARECER HTML OCULTO*/
+.displayBlocker {
+    display: block;
+}
+/* USADO PARA DESAPARECER HTML OCULTO*/
+.displayNoner {
+    display: none;
 }

@@ -18,6 +18,10 @@ nav {
     border-top: solid 5px #572EE5;
     border-bottom: solid 1px lightblue;/*DESCARTAR ESTE BORDE AL TERMINAR*/
 }
+object {
+    pointer-events: none;
+}
+
 .nav-links {
     display: flex;
     justify-content: space-between;
@@ -40,7 +44,9 @@ nav {
     width: 54px;
     border: solid 1px #572EE5;
     border-radius: 50%;
+    cursor: pointer;
 }
+
 .burger {
     display: none;
 }
@@ -124,11 +130,11 @@ nav {
         border-bottom: unset;
     }
 
-    #burgerIcon {
-        cursor: pointer;
-    }
     .burger{
         display: block;
+    }
+    #burger{
+        cursor: pointer;
     }
     #check {
         display: none;

@@ -12,10 +12,10 @@
     align-items: center;
     height: 90px;
     font-family: Montserrat ,sans-serif;
-    background-color: white;
+    background-color: #37383C;
     padding-left: 9.25vw;
     padding-right: 9.25vw;
-    border-top: solid 5px #572EE5;
+    border-top: solid 5px black;
 }
 object {
     pointer-events: none;
@@ -32,7 +32,7 @@ object {
     text-transform: uppercase;
 }
 .nav-links .menubtn {
-    color: #572EE5;
+    color: white;
     font-weight: 700;
     font-size: 13px;
     cursor: pointer;
@@ -43,15 +43,15 @@ object {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #37383C;
     height: 54px;
     width: 54px;
-    border: solid 1px #572EE5;
+    border: solid 1px white;
     border-radius: 50%;
     cursor: pointer;
 }
 .nav-links #gif_creator:hover {
-    background-color: #572EE5;
+    background-color: white;
     border: none;
 }
 .nav-links #gif_creator:active {
@@ -85,10 +85,13 @@ object {
     body {
         overflow-x: hidden;
     }
-
     #logoNav {
         height: 49px;
         width: 53px;
+    }
+    .logonav {
+        height: 49px;
+        width: 49px;
     }
     .makegif {
         display: none;
@@ -98,8 +101,8 @@ object {
         right: 0px;
         height: 100vh;
         top: 90px;
-        background-color: #572EE5;
-        opacity: 90%;
+        background-color: black;
+        opacity: 1;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -165,9 +168,10 @@ object {
 
 body {
     font-family: Montserrat ,sans-serif; 
+    background-color: #37383C;
 }
 main {
-    background-color: white;
+    background-color: #37383C;
 }
 object {
     pointer-events: none;
@@ -180,7 +184,7 @@ object {
     font-family: Montserrat ,sans-serif;
     font-weight: 700;
     font-size: 25px;
-    color: #572EE5;
+    color: white;
     text-align: center;
     line-height: 33px;
     margin-top: 7px;
@@ -205,7 +209,7 @@ object {
     width: 334px;
     height: auto;
     border-radius: 27px;
-    border: solid 1px #572EE5;
+    border: solid 1px white;
 }
 .flex .busca_container {
     display: flex;
@@ -213,6 +217,8 @@ object {
     align-items: center;
 }
 .busca_container input {
+    background-color: #37383C;
+    color: white;
     border: none;
     outline: none;
     padding : 10px 30px 10px 5px;
@@ -266,14 +272,14 @@ object {
     font-family: Montserrat ,sans-serif;
     font-size: 16px;
     font-weight: 700;
-    color: #572EE5;
+    color: white;
     text-align: center;
     line-height: 25px;
 }
 .trendings p{
     font-family: Montserrat ,sans-serif;
     font-size: 14px;
-    color: #572EE5;
+    color: white;
     text-align: center;
     line-height: 25px;
 }
@@ -300,7 +306,7 @@ object {
     text-align: center;
     margin-top: 43px;
     margin-bottom: 38px;
-    color: #572EE5;
+    color: white;
 }
 .resultados_container{
     display: none;  /* DISPLAY CAMBIADO DESDE JS */
@@ -368,9 +374,9 @@ object {
     text-align: center;
 }
 #verMas{
-    color: #572EE5;
-    background-color: white;
-    border: solid 1px #572EE5;
+    color: white;
+    background-color: #37383C;
+    border: solid 1px white;
     border-radius: 25px;
     font-weight: 700;
     font-size: 13px;
@@ -379,8 +385,8 @@ object {
     padding: 18px 31.5px 16px 31.5px;
 }
 #verMas:hover {
-    color: white;
-    background-color: #572EE5;
+    color: black;
+    background-color: white;
 }
 
 
@@ -388,19 +394,19 @@ object {
 
 .trendingGifos {
     margin-top: 45px;
-
-    background-color: #F3F5F8;
+    background-color: #222326;
     width: 100%;
     height: 430px;
 }
 .trendingGifos h1 {
-    color :#572EE5 ;
+    color :white ;
     text-align: center;
     font-size: 20px;
     padding-top: 46px;
     padding-bottom: 7px;
 }
 .trendingGifos h2 {
+    color :white ;
     font-family: Roboto ,sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -493,9 +499,11 @@ footer {
     flex-direction: column;
     align-items: center;
     margin-top: 47px;
-    border-bottom: solid 5px #572EE5;
+    border-bottom: solid 5px black;
+    background-color: #37383C;
 }
 footer h4 {
+    color: white;
     font-family: Roboto ,sans-serif;
     font-weight: 300;
     margin-bottom: 24px;
@@ -623,7 +631,7 @@ footer h4:last-child {
         align-items: center;
         margin-top: 0px;
         height: 116px;
-        border-bottom: solid 5px #572EE5;
+        border-bottom: solid 5px black;
     }
     footer .contRedes {
         display: flex;
@@ -673,113 +681,7 @@ footer h4:last-child {
     .resultados .grid-item {
         width: 22vw;
         height: 17vw;
-    }
-
-    /*SLIDER MODO DESKTOP----------------------------->>>*/
-    .trendingGifos {
-        margin-top: 45px;
-        background-color: #F3F5F8;
-        width: 100%;
-        height: 430px;
-    }
-    .trendingGifos h1 {
-        color :#572EE5 ;
-        text-align: center;
-        font-size: 20px;
-        padding-top: 46px;
-        padding-bottom: 7px;
-    }
-    .trendingGifos h2 {
-        font-family: Roboto ,sans-serif;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 23px;
-        text-align: center;
-        padding-bottom: 32px;
-    }
-    .holster {
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-flow: column nowrap;
-        font-family: monospace;
-        width: 82.5%;
-        }
-    .containerX {
-        display: flex;
-        overflow-x: auto;
-        flex: none;
-        margin: auto;
-        width: 100%;
-        height: 275px;
-        flex-flow: row nowrap;
-        scroll-snap-type: x mandatory;
-    }
-    
-    .containerX::-webkit-scrollbar{
-        
-    }
-    .containerX .grid-item {
-        text-align: center;
-        scroll-snap-align: center;
-        margin: 0 11px 0 11px;
-        flex: none;
-        width: 357px;
-        background-image: url(https://elintransigente.com/wp-content/uploads/2020/04/voz-estadio-boca-3.jpg?w=1024?w=1000&h=600&crop=1);
-        background-position: center; 
-        background-repeat: no-repeat; 
-        background-size: cover;
-    }
-    .containerX .grid-item:first-child {
-        margin-left: 0px;
-    }
-    .containerX .grid-item:last-child {
-        margin-right: 0px;
-    }
-    .containerX .blue {
-            width: 100%;
-            height: 100%;
-            background-color: #572EE5;
-            opacity: 0;
-    }
-    .containerX .blue:hover {
-            opacity: .8;
-    }
-    .containerX .cardIcons {
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-    }
-    .containerX .cardIcons:hover {
-            background-color: #572EE5;
-            opacity: 1;
-    }
-    .containerX .cardIcons .icon {
-            height: 29px;
-            width: 29px;
-            background-color: white;
-            opacity: .5;
-            padding: 6px;
-            border-radius: 6px;
-            margin-top: 10px;
-            margin-right: 10px;
-    }
-    .containerX .cardIcons .icon:hover {
-            cursor: pointer;
-            opacity: 1;
-    }
-
-    .containerX .grid-item h4 {
-            font-family: Montserrat ,sans-serif;
-            width: 100px;
-            line-height: 16px;
-            font-size: 16px;
-            color: white;
-    }
-    /*------------------------------------------------XXX*/ 
+    } 
 }
 
 /* USADO PARA APARECER HTML OCULTO*/

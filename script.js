@@ -1,5 +1,8 @@
+
+const APIKEY = "IPDmvhDzm0liJgSooGZzCeivUyTZZ82L";
+
+
 //  CAMBIO DE ICONO - MENU HAMBURGUESA-----------------------------------
-//const burger = document.querySelector('.burger'); 
 const nav = document.querySelector('.nav-links');
 const icon = document.getElementById("check");
 const img = document.getElementById('burgerIcon');
@@ -30,10 +33,7 @@ const trendings = document.getElementsByClassName('trendings');
 const cutLine = document.getElementsByClassName('cutLine');
 const grillaGifs = document.getElementById('grillaGifs'); 
 const cutLinex = document.getElementById('cutLinex');
-//----GIFCARDS-------------------------------------------------
-const gifCard = document.getElementById('gifCard');
-const gifIcons = document.getElementById('cardIcons');
-const tituGif = document.getElementById('tituloGif');
+
 
 
 input_gif.addEventListener("keyup",()=>{
@@ -141,6 +141,9 @@ makeGif.addEventListener('mouseout',()=>{
   }
 })
 
+
+
+
 //----------CAMBIO A DARK THEME--------------------->>>
 
 //TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
@@ -190,6 +193,118 @@ function cambioIconos(){
 //----------------------------------------------------------XXX
 
 
-var mediaqueryList = window.matchMedia("(max-width: 480px)");
+
+//----GIFCARDS-------------------------------------------------
+const trendCard = document.querySelectorAll('#trendCard');
+const gifIcons = document.getElementById('cardIcons');
+const tituGif = document.querySelectorAll('#tituloTrend');
+const iconFav = document.querySelectorAll('#fav');
+const favCheck = document.querySelectorAll('#checkfav');
+
+//REQUEST DE 5 TRENDINGS PARA SECCION TRENDINGS
+function pedidoTrendings(){
+
+  async function buscaTrendings(){
+    let urlTrend = 'https://api.giphy.com/v1/gifs/trending?api_key='+APIKEY+'&limit=5&rating=g';
+    let respTrend = await fetch(urlTrend);
+    let infoTrend = await respTrend.json();
+    return infoTrend;
+  }
+  buscaTrendings().then(response=>{
+
+    console.log(response);
+
+    for(a=0; a<response.data.length; a++){
+
+      let idTrending = response.data[a].id;// ID DE TRENDING
+      let urlTrending = response.data[a].images.fixed_height.url;//URL DE TRENDING
+      let tituloTrending = response.data[a].title;//TITULO DE TRENDING
+
+      sessionStorage.setItem('trend'+idTrending,JSON.stringify([urlTrending,tituloTrending,idTrending]));//
+      guardaFavoritos(a,urlTrending,tituloTrending,idTrending);
+
+      
+        for(b=0; b<trendCard.length; b++){//RECORRO TODAS LAS TRENDCARD Y APLICO URL,TITULO
+
+          trendCard[a].style.backgroundImage = 'url('+urlTrending+')';
+          tituGif[a].textContent =  tituloTrending ;
+          
+         if(chequearCorazon(idTrending)){
+          iconFav[a].setAttribute('src','./images/icon-fav-active.svg');//LIKE
+         } 
+        }  
+      }
+ 
+  }).catch((error)=>{
+    console.log("FALLO FETCH DE TRENDINGS "+error)
+  });
+}
+pedidoTrendings();
+
+
+function chequearCorazon(id){
+
+  if(localStorage.hasOwnProperty("favoritoGif"+id) ==true){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+function guardaFavoritos(a,url,tit,id){
+
+  let fav = iconFav[a];
+  fav.addEventListener("click",()=>{
+    
+    if(fav.getAttribute('src') == './images/icon-fav-hover.svg'){
+
+      fav.setAttribute('src','./images/icon-fav-active.svg');//LIKE
+      
+      //AL HABER CLICKEADO EL CORAZON, LO GUARDO EN LOCAL STORAGE
+      let news = agregarFavorito(url,tit,id);//LO AGREGO AL ARRAY FAVORITOS
+      let newFav = JSON.stringify(news);//STRINGIFICO EL OBJETO
+      localStorage.setItem("favoritoGif"+id, newFav );//LO GUARDO EN LA LOCAL
+      
+    }else{
+      fav.setAttribute('src','./images/icon-fav-hover.svg');//DISLIKE
+      
+      quitarFavorito(id);//LO ELIMINO DEL ARRAY FAVORITOS
+      localStorage.removeItem("favoritoGif"+id);//LO ELIMINO DE LA LOCAL STORAGE
+    }
+  })
+}
+
+class Favorito{
+  constructor(url,titulo,id){
+      this.url = url;
+      this.titulo = titulo;
+      this.id = id;
+  }
+}
+
+let favoritos = [];
+let nuevoFavorito;
+
+function agregarFavorito(param1, param2, param3){
+
+  nuevoFavorito = new Favorito(param1, param2, param3);
+  favoritos.push(nuevoFavorito);
+  return [param1,param2,param3] ;
+}
+
+function quitarFavorito(id){
+
+  var eliminar = id;
+  favoritos = favoritos.filter(function(idTrending){
+      if(idTrending.id == eliminar){
+          return false;
+      }else{
+          return true;
+      }
+  });
+}
+
+
+
 
 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css" id="light-theme">
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="logo">
+            <a href="index.html">
+                <img id="logoNav" src="./images/logo-desktop.svg" alt="">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <input type="checkbox" id="modoNoche" hidden>
+                <label for="modoNoche"  >
+                    <p class="menubtn">Nocturno</p>
+                </label>
+            </li>
+            <li>
+                <a href=""><p class="menubtn">Favoritos</p></a>
+            </li>
+            <li>
+                <a href=""><p class="menubtn">Mis Gifos</p></a>
+            </li>
+            <li class="makegif" id="makegif">
+                <a href="#" id="gif_creator">
+                    <img id="gifCreatorBtn" src="./images/button-crear-gifo.svg" alt="">
+                </a>
+            </li>
+        </ul>
+        <div class="burger">
+            <input type="checkbox" id="check">
+            <label for="check" id="burger">
+                    <img id="burgerIcon" src="./images/burger.svg" alt="">
+            </label>
+        </div>
+    </nav>
+    <main>
+        <section class="favoritos"></section>
+        <section class="trendingGifos">
+            <h1>Trending GIFOS</h1>
+            <h2>Mira los últimos<br> GIFOS de nuestra comunidad.</h2>
+            <div class="holster">
+                <div class="containerX " dir="ltr">
+                    <div class="grid-item" id="trendCard">
+                        <div class="blue">
+                            <div class="cardIcons" id="cardIcons">
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
+                        </div>
+                    </div>
+                    <div class="grid-item" id="trendCard">
+                        <div class="blue">
+                            <div class="cardIcons" id="cardIcons">
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
+                        </div>
+                    </div>
+                    <div class="grid-item" id="trendCard">
+                        <div class="blue">
+                            <div class="cardIcons" id="cardIcons">
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
+                        </div>
+                    </div>
+                    <div class="grid-item" id="trendCard">
+                        <div class="blue">
+                            <div class="cardIcons" id="cardIcons">
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
+                        </div>
+                    </div>
+                    <div class="grid-item" id="trendCard">
+                        <div class="blue">
+                            <div class="cardIcons" id="cardIcons">
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="contRedes">
+            <h4>Compartir en:</h4>
+            <div class="redes">
+                <a href="https://www.facebook.com/" target="_blank">
+                    <svg class="icon" width="8" height="17" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path id="face" d="M1.716 17V8.499H0v-2.93h1.716V3.812c0-2.39.967-3.811 3.72-3.811h2.29v2.93H6.294c-1.07 0-1.142.41-1.142 1.174L5.148 5.57h2.594l-.304 2.929h-2.29V17H1.716z" fill="#CDD6E0"/><path d="M-9-2h20v20H-9z"/></g></svg>
+                </a>
+                <a href="https://twitter.com/explore" target="_blank">
+                    <svg class="icon" width="18" height="17" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M-1-2h20v20H-1z"/><path id='tr' d="M17.502.3a6.975 6.975 0 01-2.345.992C14.485.496 13.524 0 12.462 0 10.422 0 8.77 1.831 8.77 4.09c0 .32.03.633.094.932C5.796 4.85 3.075 3.224 1.254.748a4.422 4.422 0 00-.5 2.057c0 1.419.651 2.67 1.642 3.405A3.434 3.434 0 01.723 5.7v.05c0 1.983 1.272 3.636 2.963 4.01a3.328 3.328 0 01-1.668.072c.469 1.625 1.833 2.809 3.45 2.84C4.203 13.77 2.61 14.422.88 14.422c-.298 0-.593-.017-.881-.056 1.635 1.16 3.575 1.837 5.661 1.837 6.793 0 10.506-6.233 10.506-11.638 0-.178-.002-.354-.01-.529A7.98 7.98 0 0018 1.918a6.816 6.816 0 01-2.12.643c.762-.505 1.348-1.307 1.622-2.261z" fill="#CDD6E0"/><path d="M-1-2h20v20H-1z"/></g></svg>
+                </a>
+                <a href="https://www.instagram.com/?hl=es-la" target="_blank">
+                    <svg class="icon" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M-1-1h20v20H-1z"/><path id="ig" d="M8.57 1.622c2.288 0 2.559.009 3.463.052.835.04 1.29.187 1.591.31.4.163.686.358.985.673.3.315.486.615.641 1.035.118.317.257.794.296 1.671.04.95.05 1.234.05 3.637s-.01 2.688-.05 3.637c-.039.877-.178 1.354-.296 1.671a2.81 2.81 0 01-.64 1.035c-.3.315-.586.51-.986.673-.302.123-.756.27-1.591.31-.904.043-1.175.052-3.463.052-2.289 0-2.56-.009-3.463-.052-.836-.04-1.29-.187-1.591-.31a2.65 2.65 0 01-.986-.673 2.81 2.81 0 01-.64-1.035c-.118-.317-.258-.794-.296-1.671-.041-.95-.05-1.234-.05-3.637s.009-2.688.05-3.637c.038-.877.178-1.354.295-1.671.156-.42.341-.72.641-1.035.3-.315.585-.51.986-.673.301-.123.755-.27 1.59-.31.905-.043 1.176-.052 3.464-.052zM8.57 0C6.242 0 5.95.01 5.036.054c-.912.044-1.534.196-2.08.418A4.184 4.184 0 001.438 1.51C.962 2.011.668 2.513.45 3.105.238 3.677.093 4.33.05 5.289.01 6.25 0 6.556 0 9s.01 2.75.051 3.71c.042.959.187 1.613.399 2.185.219.592.512 1.094.988 1.594.477.501.955.809 1.518 1.038.546.223 1.168.375 2.08.419.915.044 1.206.054 3.534.054 2.327 0 2.619-.01 3.533-.054.912-.044 1.535-.196 2.08-.419a4.178 4.178 0 001.518-1.038c.477-.5.77-1.002.989-1.594.211-.572.356-1.226.398-2.184.042-.96.052-1.267.052-3.711s-.01-2.75-.052-3.71c-.042-.959-.187-1.613-.398-2.185A4.437 4.437 0 0015.7 1.51 4.182 4.182 0 0014.183.472c-.545-.222-1.168-.374-2.08-.418C11.189.01 10.897 0 8.57 0zm.017 4.393c-2.432 0-4.404 2.07-4.404 4.625 0 2.554 1.972 4.625 4.404 4.625s4.404-2.071 4.404-4.625-1.972-4.625-4.404-4.625zm0 7.627c-1.579 0-2.859-1.344-2.859-3.002 0-1.658 1.28-3.002 2.859-3.002s2.858 1.344 2.858 3.002c0 1.658-1.28 3.002-2.858 3.002zm5.56-7.842c0 .592-.457 1.072-1.02 1.072-.564 0-1.02-.48-1.02-1.072 0-.591.456-1.071 1.02-1.071.563 0 1.02.48 1.02 1.071z" fill="#CDD6E0"/><path d="M-1-1h20v20H-1z"/></g></svg>
+                </a>
+            </div>
+        </div>
+        <h4>© GIFOS 2020 All Rights Reserved.</h4>
+    </footer>
+<script src="script.js"></script>
+<script>
+    document.cookie = 'same-site-cookie=foo; SameSite=Lax'; 
+    document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+</script>
+</body>
+</html>

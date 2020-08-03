@@ -11,7 +11,7 @@
 <body>
     <nav class="nav" id="nav">
         <div class="logo">
-            <a href="#" onclick="location.reload()">
+            <a href="index.html">
                 <img id="logoNav" src="./images/logo-desktop.svg" alt="">
             </a>
         </div>
@@ -23,7 +23,7 @@
                 </label>
             </li>
             <li>
-                <a  href=""><p class="menubtn">Favoritos</p></a>
+                <a  href="favoritos.html"><p class="menubtn">Favoritos</p></a>
             </li>
             <li>
                 <a  href=""><p class="menubtn">Mis Gifos</p></a>
@@ -291,54 +291,54 @@
             <h2>Mira los últimos<br> GIFOS de nuestra comunidad.</h2>
             <div class="holster">
                 <div class="containerX " dir="ltr">
-                    <div class="grid-item" id="gifCard">
+                    <div class="grid-item" id="trendCard">
                         <div class="blue">
                             <div class="cardIcons" id="cardIcons">
-                                <div><img class="icon" id="ic" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt="" aria-checked="true"></div>
                                 <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
                                 <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 id="tituloGif">Titulo GIFO</h4>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
                         </div>
                     </div>
-                    <div class="grid-item" id="gifCard">
+                    <div class="grid-item" id="trendCard">
                         <div class="blue">
                             <div class="cardIcons" id="cardIcons">
-                                <div><img class="icon" id="ic" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt=""></div>
                                 <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
                                 <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 id="tituloGif">Titulo GIFO</h4>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
                         </div>
                     </div>
-                    <div class="grid-item" id="gifCard">
+                    <div class="grid-item" id="trendCard">
                         <div class="blue">
                             <div class="cardIcons" id="cardIcons">
-                                <div><img class="icon" id="ic" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt=""></div>
                                 <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
                                 <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 id="tituloGif">Titulo GIFO</h4>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
                         </div>
                     </div>
-                    <div class="grid-item" id="gifCard">
+                    <div class="grid-item" id="trendCard">
                         <div class="blue">
                             <div class="cardIcons" id="cardIcons">
-                                <div><img class="icon" id="ic" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt=""></div>
                                 <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
                                 <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 id="tituloGif">Titulo GIFO</h4>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
                         </div>
                     </div>
-                    <div class="grid-item" id="gifCard">
+                    <div class="grid-item" id="trendCard">
                         <div class="blue">
                             <div class="cardIcons" id="cardIcons">
-                                <div><img class="icon" id="ic" src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div><img class="icon" id="fav" src="./images/icon-fav-hover.svg" alt=""></div>
                                 <div><img class="icon" id="ic" src="./images/icon-download.svg" alt=""></div>
                                 <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 id="tituloGif">Titulo GIFO</h4>
+                            <h4 id="tituloTrend">Titulo GIFO</h4>
                         </div>
                     </div>
                 </div>
@@ -363,5 +363,10 @@
         <h4>© GIFOS 2020 All Rights Reserved.</h4>
     </footer>
 <script src="script.js"></script>
+<script>
+    document.cookie = 'same-site-cookie=foo; SameSite=Lax'; 
+    document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+</script>
+
 </body>
 </html>

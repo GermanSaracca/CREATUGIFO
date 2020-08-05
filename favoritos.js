@@ -24,103 +24,6 @@ icon.addEventListener("click",()=>{
 
 //----------------------------------------------------------XXX
 
-//  BUSQUEDA DE GIFS ----------------------------------------
-let lupa = document.getElementById('search');
-let lupanueva = document.getElementById("lupa_onclick");
-let sugerencia = document.getElementById('suger');
-let input_gif = document.getElementById('txt');
-let trendings = document.getElementsByClassName('trendings');
-let cutLine = document.getElementsByClassName('cutLine');
-let grillaGifs = document.getElementById('grillaGifs'); 
-let cutLinex = document.getElementById('cutLinex');
-
-
-
-input_gif.addEventListener("keyup",()=>{
-
-  //AGREGO O QUITO LA CLASE SEGUN EL VALOR DE INPUT
-  if(input_gif.value !== '' && modoNoche.checked !== true){
-
-    sugerencia.classList.add('displayBlocker');
-    lupanueva.classList.add('displayBlocker');
-    cutLinex.style.display = 'unset';
-    cutLine[0].classList.add('displayBlocker');
-    trendings[0].classList.add('displayNoner');
-    lupa.setAttribute('src',"./images/close.svg");
-
-  }else if(input_gif.value == '' && modoNoche.checked !== true) {
-
-    sugerencia.classList.remove('displayBlocker');
-    lupanueva.classList.remove('displayBlocker');
-    cutLinex.style.display = 'none';
-    cutLine[0].classList.remove('displayBlocker');
-    trendings[0].classList.remove('displayNoner');
-    grillaGifs.classList.remove('displayBlocker');
-    lupa.setAttribute('src',"./images/icon-search.svg");
-    
-
-  }else if(input_gif.value !== '' && modoNoche.checked == true){
-    sugerencia.classList.add('displayBlocker');
-    lupanueva.classList.add('displayBlocker');
-    lupanueva.setAttribute('src','./images/icon-search-mod-noc.svg');
-    cutLinex.style.display = 'unset';
-    cutLine[0].classList.add('displayBlocker');
-    trendings[0].classList.add('displayNoner');
-    lupa.setAttribute('src',"./images/button-close-noc.svg");
-
-  }else if(input_gif.value == '' && modoNoche.checked == true){
-    sugerencia.classList.remove('displayBlocker');
-    lupanueva.classList.remove('displayBlocker');
-    cutLinex.style.display = 'none';
-    cutLine[0].classList.remove('displayBlocker');
-    trendings[0].classList.remove('displayNoner');
-    grillaGifs.classList.remove('displayBlocker');
-    lupa.setAttribute('src',"./images/icon-search-mod-noc.svg");
-  }
-  
-  //INICIA BUSQUEDA CON EL ENTER
-  if(event.wich == 13 || event.keyCode == 13 && input_gif.value !== ""){
-    grillaGifs.classList.toggle('displayBlocker');
-  }
-
-  // ACCION DE CERRAR SUGERENCIAS Y RESETEAR CON LA CRUZ.
-  lupa.addEventListener("click",()=>{
-    if(modoNoche.checked !== true){
-
-      sugerencia.classList.remove('displayBlocker');
-      lupanueva.classList.remove('displayBlocker');
-      cutLinex.style.display = 'none';
-      cutLine[0].classList.remove('displayBlocker');
-      trendings[0].classList.remove('displayNoner');
-      lupa.setAttribute('src',"./images/icon-search.svg");
-      input_gif.value = '';
-      grillaGifs.classList.remove('displayBlocker');
-    }else{
-      sugerencia.classList.remove('displayBlocker');
-      lupanueva.classList.remove('displayBlocker');
-      lupanueva.setAttribute('src','./images/icon-search-mod-noc.svg');
-      cutLinex.style.display = 'none';
-      cutLine[0].classList.remove('displayBlocker');
-      trendings[0].classList.remove('displayNoner');
-      lupa.setAttribute('src',"./images/icon-search-mod-noc.svg");
-      input_gif.value = '';
-      grillaGifs.classList.remove('displayBlocker')
-
-    }
-
-  })
-
-  //GUARDO EL VALOR EN UNA VARIABLE
-  let busqueda = input_gif.value;
-  console.log("busqueda = "+ busqueda);
-})
-
-//ESTA LUPA DA LA ACCION DE QUE APAREZCAN LOS GIFS
-lupanueva.addEventListener('click',()=>{
-  grillaGifs.classList.toggle('displayBlocker');
-});
-
-//----------------------------------------------------------XXX
 
 //MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
 let makeGif = document.getElementById('makegif');
@@ -177,8 +80,7 @@ function cambioIconos(){
     btnMenu[0].textContent = 'Modo Diurno';
     crearGif.setAttribute('src','./images/button-crear-gifo-noc.svg');
     img.setAttribute('src',"./images/button-close-noc.svg");
-    //MAIN
-    lupa.setAttribute('src',"./images/icon-search-mod-noc.svg");
+
 
   }else {
 
@@ -186,8 +88,7 @@ function cambioIconos(){
     btnMenu[0].textContent = 'Modo Nocturno';
     crearGif.setAttribute('src','./images/button-crear-gifo.svg');
     img.setAttribute('src',"./images/close.svg");
-    //MAIN
-    lupa.setAttribute('src',"./images/icon-search.svg");
+
   }
 }
 //----------------------------------------------------------XXX

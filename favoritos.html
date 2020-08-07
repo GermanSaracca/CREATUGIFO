@@ -42,19 +42,17 @@
         </div>
     </nav>
     <main>
-        <section class="favoritos">
-            <div class="favs">
-                <svg  width="28px" height="21px" viewBox="0 0 28 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-                    <title>icon-favoritos</title>
-                    <desc>Created with Sketch.</desc>
-                    <g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g id="00-UI-Kit" transform="translate(-664.000000, -2771.000000)" fill="#50E3C2">
-                            <path d="M680.343231,2771 L680.343231,2773.33333 L679.031241,2773.33333 L678.012038,2773.33333 L677.987962,2773.33333 L677.225566,2773.33333 L675.656501,2773.33333 L675.656501,2771 L668.662654,2771 L668.662654,2773.33333 L666.331327,2773.33333 L666.331327,2775.66667 L664,2775.66667 L664,2778 L664,2780.33333 L666.331327,2780.33333 L666.331327,2782.66667 L668.662654,2782.66667 L668.662654,2785 L670.993981,2785 L670.993981,2787.33333 L673.325308,2787.33333 L673.325308,2789.66667 L675.656501,2789.66667 L675.656501,2792 L680.343231,2792 L680.343231,2789.66667 L682.674558,2789.66667 L682.674558,2787.33333 L685.006019,2787.33333 L685.006019,2785 L687.337346,2785 L687.337346,2782.66667 L689.668539,2782.66667 L689.668539,2780.33333 L692,2780.33333 L692,2775.66667 L689.668539,2775.66667 L689.668539,2773.33333 L687.337346,2773.33333 L687.337346,2771 L680.343231,2771 Z M668.666667,2775.40323 L671,2775.40323 L671,2773.03226 L673.333333,2773.03226 L673.333333,2775.40323 L671,2775.40323 L671,2777.77419 L668.666667,2777.77419 L668.666667,2775.40323 Z" id="icon-favoritos"></path>
-                        </g>
-                    </g>
-                </svg>
+        <section class="favoritosResults">
+            <div class="tituFav">
+                <img src="./images/icon-favoritos.svg" alt="">
                 <h1>Favoritos</h1>
+            </div>
+            <div class="estadoFav" id="estadoFav">
+                <img src="./images/favoritos-sincontenido.svg" alt="" >
+                <h1>"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"</h1>
+            </div>
+            <div id="allFavs">
+
             </div>
         </section>
         <section class="trendingGifos">
@@ -69,7 +67,7 @@
                                 <div><img class="download" id="icon" src="./images/icon-download.svg" alt=""></div>
                                 <div><img class="max" id="icon" src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 class="tituloTrend">Titulo GIFO</h4>
+                            <h4 class="tituloTrend"></h4>
                         </div>
                     </div>
                     <div class="grid-itemx" id="trendCard">
@@ -77,9 +75,9 @@
                             <div class="cardIcons" id="cardIcons">
                                 <div><img class="fav" id="icon" src="./images/icon-fav-hover.svg" alt=""></div>
                                 <div><img class="download" id="icon" src="./images/icon-download.svg" alt=""></div>
-                                <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
+                                <div><img class="max" id="icon" src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 class="tituloTrend">Titulo GIFO</h4>
+                            <h4 class="tituloTrend"></h4>
                         </div>
                     </div>
                     <div class="grid-itemx" id="trendCard">
@@ -87,9 +85,9 @@
                             <div class="cardIcons" id="cardIcons">
                                 <div><img class="fav" id="icon" src="./images/icon-fav-hover.svg" alt=""></div>
                                 <div><img class="download" id="icon" src="./images/icon-download.svg" alt=""></div>
-                                <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
+                                <div><img class="max" id="icon" src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 class="tituloTrend">Titulo GIFO</h4>
+                            <h4 class="tituloTrend"></h4>
                         </div>
                     </div>
                     <div class="grid-itemx" id="trendCard">
@@ -97,9 +95,9 @@
                             <div class="cardIcons" id="cardIcons">
                                 <div><img class="fav" id="icon" src="./images/icon-fav-hover.svg" alt=""></div>
                                 <div><img class="download" id="icon" src="./images/icon-download.svg" alt=""></div>
-                                <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
+                                <div><img class="max" id="icon" src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 class="tituloTrend">Titulo GIFO</h4>
+                            <h4 class="tituloTrend"></h4>
                         </div>
                     </div>
                     <div class="grid-itemx" id="trendCard">
@@ -107,7 +105,7 @@
                             <div class="cardIcons" id="cardIcons">
                                 <div><img class="fav" id="icon" src="./images/icon-fav-hover.svg" alt=""></div>
                                 <div><img class="download" id="icon" src="./images/icon-download.svg" alt=""></div>
-                                <div><img class="icon" id="ic" src="./images/icon-max.svg" alt=""></div>
+                                <div><img class="max" id="icon" src="./images/icon-max.svg" alt=""></div>
                             </div>
                             <h4 class="tituloTrend">Titulo GIFO</h4>
                         </div>

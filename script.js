@@ -141,9 +141,6 @@ makeGif.addEventListener('mouseout',()=>{
   }
 })
 
-
-
-
 //----------CAMBIO A DARK THEME--------------------->>>
 
 //TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
@@ -190,7 +187,7 @@ function cambioIconos(){
     lupa.setAttribute('src',"./images/icon-search.svg");
   }
 }
-//----------------------------------------------------------XXX
+//--------------FIN CAMBIO A DARK THEME----------------------XXX
 
 
 //----GIFCARDS------------------------------------------------------------------------------------------------------
@@ -199,6 +196,7 @@ let gifIcons = document.getElementById('cardIcons');
 let tituGif = document.querySelectorAll('.tituloTrend');
 let iconFav = document.querySelectorAll('.fav');
 let iconDownload = document.querySelectorAll('.download');
+
 
 //REQUEST DE 5 TRENDINGS PARA SECCION TRENDINGS---------------------------------------------------------------------
 function pedidoTrendings(){
@@ -216,41 +214,106 @@ function pedidoTrendings(){
     for(a=0; a<response.data.length; a++){
 
       let idTrending = response.data[a].id;// ID DE TRENDING
-      let urlTrending = response.data[a].images.fixed_height.url;//URL DE TRENDING
+      let urlTrending = response.data[a].images.original.url;//URL DE TRENDING
       let tituloTrending = response.data[a].title;//TITULO DE TRENDING
       let urlDescarga = response.data[a].images.downsized.url;
       
       guardaFavoritos(a,urlTrending,tituloTrending,idTrending);
-      descargaGif(urlDescarga,a);
-
-        for(b=0; b<trendCard.length; b++){//RECORRO TODAS LAS TRENDCARD Y APLICO URL,TITULO
-
-          trendCard[a].style.backgroundImage = 'url('+urlTrending+')';
-          tituGif[a].textContent =  tituloTrending ;
-          
-         if(chequearCorazon(idTrending)){
-          iconFav[a].setAttribute('src','./images/icon-fav-active.svg');//LIKE
-         } 
-         
-        }  
+      descargaGif(urlDescarga,a,tituloTrending);
+      maximizarGif(a, urlTrending, tituloTrending);
+      trendCard[a].style.backgroundImage = 'url('+urlTrending+')';
+      if(mediaDesktop.matches){
+        tituGif[a].textContent =  tituloTrending ;
       }
- 
+      if(chequearCorazon(idTrending)){
+        iconFav[a].setAttribute('src','./images/icon-fav-active.svg');//LIKE
+      }        
+    }
   }).catch((error)=>{
     console.log("FALLO FETCH DE TRENDINGS "+error)
   });
 }
 pedidoTrendings();
+// VARIABLES PARA MEDIAQUERYS
+let mediaMobile = window.matchMedia("(max-width: 768px)");
+let mediaIpad = window.matchMedia("(min-width: 768px) and (max-width : 1024px)");
+let mediaDesktop = window.matchMedia("(min-width: 1025px)");
 
+//ELEMENTOS PARA VISUALIZAR GIF AL MAX
+let containerX = document.getElementsByClassName('containerX')[0];
+let iconMax = document.querySelectorAll('.max');
+let modal = document.createElement('div');
+let closeMax = document.createElement('a');
+let imgClose = document.createElement('img');
+let containMax = document.createElement('div');
+let gifMax= document.createElement('img');
+let infoDiv = document.createElement('div');
+let titugifMax = document.createElement('h4');
+let iconDiv = document.createElement('div');
 
+function maximizarGif(b,url,titulo){
+    if(mediaDesktop.matches){
+
+      iconMax[b].addEventListener('click', () => añadoDomMax(b,url,titulo));
+
+    }else if(mediaMobile.matches || mediaIpad.matches){
+
+      trendCard[b].addEventListener('click', () => añadoDomMax(b,url,titulo));
+    }
+
+  closeMax.addEventListener('click',()=>{
+    modal.style.display = 'none';
+  })
+  
+  //CIERRO CON ESCAPE
+  document.addEventListener("keydown", function(event) {
+    if(event.keyCode === 27){
+      modal.style.display = 'none';
+    }
+  });
+}
+function añadoDomMax(b,url,titulo){
+
+  modal.innerHTML = '';
+  modal.style.display = 'block';
+
+  closeMax.setAttribute('href',"index.html")
+  imgClose.setAttribute('src', "./images/button-close.svg");
+  gifMax.setAttribute('src', url);
+
+  modal.className = 'modal';
+  closeMax.className = 'close';
+  containMax.className = 'gifMaxContainer';
+  gifMax.className = 'gifMax';
+  infoDiv.className = 'infoDiv';
+  titugifMax.className = 'tituloTrendMax';
+  titugifMax.textContent = titulo;
+  iconDiv.className = 'iconDiv';
+
+  containerX.appendChild(modal);
+  modal.appendChild(closeMax);
+  modal.appendChild(containMax);
+  closeMax.appendChild(imgClose);
+  containMax.appendChild(gifMax);
+  containMax.appendChild(infoDiv);
+  infoDiv.appendChild(titugifMax);
+  infoDiv.appendChild(iconDiv);
+  iconDiv.appendChild(iconFav[b]);
+  iconDiv.appendChild(iconDownload[b]);
+
+  iconFav[b].addEventListener('click',()=>{
+    if(iconFav[b].style.opacity = '0.5'){
+      iconFav[b].style.opacity = '1';
+    }
+  })
+}
 function chequearCorazon(id){
-
   if(localStorage.hasOwnProperty("favoritoGif"+id) ==true){
     return true;
   }else{
     return false;
   }
 }
-
 function guardaFavoritos(a,url,tit,id){
 
   let fav = iconFav[a];
@@ -284,7 +347,6 @@ function guardaFavoritos(a,url,tit,id){
     }
   })
 }
-
 let arrayGuardado = [];
 function recargarArray(){
   let guardado = localStorage.getItem("FAVORITOS");
@@ -300,17 +362,14 @@ class Favorito{
       this.id = id;
   }
 }
-
 let favoritos = [];
 let nuevoFavorito;
-
 function agregarFavorito(param1, param2, param3){
 
   nuevoFavorito = new Favorito(param1, param2, param3);
   favoritos.push(nuevoFavorito);
   return nuevoFavorito;
 }
-
 function quitarFavorito(id){
 
   var eliminar = id;
@@ -322,16 +381,16 @@ function quitarFavorito(id){
       }
   });
 }
-function descargaGif(url,a){
+
+function descargaGif(url,a,titulo){
   iconDownload[a].addEventListener("click", () =>{
     var x=new XMLHttpRequest();
     x.open("GET", url, true);
     x.responseType = 'blob';
-    x.onload=function(e){download(x.response, "descarga.gif", "image/gif" ); }
+    x.onload=function(e){download(x.response, titulo+".gif", "image/gif" ); }
     x.send();
   });
 }
-
 function download(data, strFileName, strMimeType) {
   var self = window, // this script is only for browsers anyway...
     defaultMime = "application/octet-stream", // this default mime also triggers iframe downloads
@@ -445,7 +504,7 @@ function download(data, strFileName, strMimeType) {
   return true;
 };
 
-
+/*
 async function getGif(url, value, api_key, number){
   let endpoint = `http://${url}?q=${value}&api_key=${api_key}limit=${number}&lang=es`;
 }

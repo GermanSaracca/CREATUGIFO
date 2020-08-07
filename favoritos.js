@@ -1,6 +1,94 @@
-
 const APIKEY = "IPDmvhDzm0liJgSooGZzCeivUyTZZ82L";
 
+let arrayGuardado = [];
+function recargarArray(){
+  let guardado = localStorage.getItem("FAVORITOS");
+  arrayGuardado = JSON.parse(guardado);
+  console.log(arrayGuardado);
+}
+recargarArray();
+
+function desplegarFavoritos(){
+  //TOMO CONTENEDORES HARDCODEADOS
+  let estadoFav = document.getElementById('estadoFav');
+  let allFavs = document.getElementById('allFavs');
+  //AGREGO CONTENEDORES DINAMICAMENTE
+  let containerFavs = document.createElement('div');
+  let favoritus = document.createElement('div');
+  let verMasFav = document.createElement('div');
+  let verMasFavA = document.createElement('a');
+
+  containerFavs.className = 'favoritosContainer';
+  favoritus.className = 'favoritos';
+  verMasFav.className = 'verMasfav';
+  verMasFavA.className = 'verMasfavA';
+
+  allFavs.appendChild(containerFavs);
+  containerFavs.appendChild(favoritus);
+  containerFavs.appendChild(verMasFav);
+  verMasFav.appendChild(verMasFavA);
+  verMasFavA.textContent = 'VER MÁS';
+
+  //FUNCION PARA VISUALIZAR 12 GIFS MAS CON BOTON DE VER MÁS
+  let largo = 12;
+  verMasFavA.addEventListener('click',()=>{
+    favoritus.innerHTML = "";
+    largo = largo + 12 ;
+
+    for(x=0; x<largo && x < arrayGuardado.length; x++){
+
+      //RECUPERO INFORMACION DE GIF GUARDADOS
+      let urlFav = arrayGuardado[x].url;
+      let titFav = arrayGuardado[x].tit;
+      let idFav = arrayGuardado[x].id;
+      //LOS AGREGO AL CONTENEDOR FAVORITUS (GRID)
+      favoritus.appendChild(añadirFavoritos(urlFav,titFav));
+      
+    }
+    if(largo>arrayGuardado.length){
+      verMasFavA.textContent = 'YA NO TIENES MÁS GIFS!';
+    }
+  })
+
+  for(x=0; x<arrayGuardado.length && x<=11; x++){
+    //RECUPERO INFORMACION DE GIF GUARDADOS
+    let urlFav = arrayGuardado[x].url;
+    let titFav = arrayGuardado[x].tit;
+    let idFav = arrayGuardado[x].id;
+    //LOS AGREGO AL CONTENEDOR FAVORITUS (GRID)
+    favoritus.appendChild(añadirFavoritos(urlFav,titFav));
+  }
+
+  if(arrayGuardado.length>0){
+    estadoFav.style.display = 'none';
+  }
+  if(arrayGuardado.length<=0){
+    verMasFav.style.display = 'none';
+  }
+}
+desplegarFavoritos();
+
+function añadirFavoritos(url,titulo){
+
+  let gridFavorito = document.createElement('div');
+  let blue = document.createElement('div');
+  let cardIconFav = document.createElement('div');
+  let tituloFav = document.createElement('h4');
+  
+  gridFavorito.className = 'grid-itemfav';
+  blue.className = 'bluefav';
+  cardIconFav.className = 'cardIconsfav';
+  tituloFav.className = 'tituloFav';
+  
+  gridFavorito.appendChild(blue);
+  blue.appendChild(cardIconFav);
+  blue.appendChild(tituloFav);
+  
+  gridFavorito.style.backgroundImage = 'url('+url+')';
+  tituloFav.textContent = titulo;
+
+  return gridFavorito;
+}
 
 //  CAMBIO DE ICONO - MENU HAMBURGUESA-----------------------------------
 let nav = document.querySelector('.nav-links');
@@ -24,7 +112,6 @@ icon.addEventListener("click",()=>{
 
 //----------------------------------------------------------XXX
 
-
 //MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
 let makeGif = document.getElementById('makegif');
 let divgifCreatorBtn = document.getElementById('gif_creator');
@@ -43,9 +130,6 @@ makeGif.addEventListener('mouseout',()=>{
     crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');
   }
 })
-
-
-
 
 //----------CAMBIO A DARK THEME--------------------->>>
 
@@ -80,7 +164,8 @@ function cambioIconos(){
     btnMenu[0].textContent = 'Modo Diurno';
     crearGif.setAttribute('src','./images/button-crear-gifo-noc.svg');
     img.setAttribute('src',"./images/button-close-noc.svg");
-
+    //MAIN
+    lupa.setAttribute('src',"./images/icon-search-mod-noc.svg");
 
   }else {
 
@@ -88,11 +173,11 @@ function cambioIconos(){
     btnMenu[0].textContent = 'Modo Nocturno';
     crearGif.setAttribute('src','./images/button-crear-gifo.svg');
     img.setAttribute('src',"./images/close.svg");
-
+    //MAIN
+    lupa.setAttribute('src',"./images/icon-search.svg");
   }
 }
-//----------------------------------------------------------XXX
-
+//--------------FIN CAMBIO A DARK THEME----------------------XXX
 
 //----GIFCARDS------------------------------------------------------------------------------------------------------
 let trendCard = document.querySelectorAll('.grid-itemx');
@@ -100,6 +185,8 @@ let gifIcons = document.getElementById('cardIcons');
 let tituGif = document.querySelectorAll('.tituloTrend');
 let iconFav = document.querySelectorAll('.fav');
 let iconDownload = document.querySelectorAll('.download');
+
+
 
 //REQUEST DE 5 TRENDINGS PARA SECCION TRENDINGS---------------------------------------------------------------------
 function pedidoTrendings(){
@@ -117,41 +204,105 @@ function pedidoTrendings(){
     for(a=0; a<response.data.length; a++){
 
       let idTrending = response.data[a].id;// ID DE TRENDING
-      let urlTrending = response.data[a].images.fixed_height.url;//URL DE TRENDING
+      let urlTrending = response.data[a].images.original.url;//URL DE TRENDING
       let tituloTrending = response.data[a].title;//TITULO DE TRENDING
       let urlDescarga = response.data[a].images.downsized.url;
       
       guardaFavoritos(a,urlTrending,tituloTrending,idTrending);
-      descargaGif(urlDescarga,a);
-
-        for(b=0; b<trendCard.length; b++){//RECORRO TODAS LAS TRENDCARD Y APLICO URL,TITULO
-
-          trendCard[a].style.backgroundImage = 'url('+urlTrending+')';
-          tituGif[a].textContent =  tituloTrending ;
-          
-         if(chequearCorazon(idTrending)){
-          iconFav[a].setAttribute('src','./images/icon-fav-active.svg');//LIKE
-         } 
-         
-        }  
+      descargaGif(urlDescarga,a,tituloTrending);
+      maximizarGif(a, urlTrending, tituloTrending);
+      trendCard[a].style.backgroundImage = 'url('+urlTrending+')';
+      if(mediaDesktop.matches){
+        tituGif[a].textContent =  tituloTrending ;
       }
- 
+      if(chequearCorazon(idTrending)){
+        iconFav[a].setAttribute('src','./images/icon-fav-active.svg');//LIKE
+      }        
+    }
   }).catch((error)=>{
     console.log("FALLO FETCH DE TRENDINGS "+error)
   });
 }
 pedidoTrendings();
+// VARIABLES PARA MEDIAQUERYS
+let mediaMobile = window.matchMedia("(max-width: 768px)");
+let mediaIpad = window.matchMedia("(min-width: 768px) and (max-width : 1024px)");
+let mediaDesktop = window.matchMedia("(min-width: 1025px)");
 
+//ELEMENTOS PARA VISUALIZAR GIF AL MAX
+let containerX = document.getElementsByClassName('containerX')[0];
+let iconMax = document.querySelectorAll('.max');
+let modal = document.createElement('div');
+let closeMax = document.createElement('a');
+let imgClose = document.createElement('img');
+let containMax = document.createElement('div');
+let gifMax= document.createElement('img');
+let infoDiv = document.createElement('div');
+let titugifMax = document.createElement('h4');
+let iconDiv = document.createElement('div');
 
+function maximizarGif(b,url,titulo){
+    if(mediaDesktop.matches){
+
+      iconMax[b].addEventListener('click', () => añadoDomMax(b,url,titulo));
+
+    }else if(mediaMobile.matches || mediaIpad.matches){
+
+      trendCard[b].addEventListener('click', () => añadoDomMax(b,url,titulo));
+    }
+
+  closeMax.addEventListener('click',()=>{
+    modal.style.display = 'none';
+  })
+  //CIERRO CON ESCAPE
+  document.addEventListener("keydown", function(event) {
+    if(event.keyCode === 27){
+      modal.style.display = 'none';
+    }
+  });
+}
+function añadoDomMax(b,url,titulo){
+
+modal.innerHTML = '';
+modal.style.display = 'block';
+
+closeMax.setAttribute('href',"favoritos.html")
+imgClose.setAttribute('src', "./images/button-close.svg");
+gifMax.setAttribute('src', url);
+
+modal.className = 'modal';
+closeMax.className = 'close';
+containMax.className = 'gifMaxContainer';
+gifMax.className = 'gifMax';
+infoDiv.className = 'infoDiv';
+titugifMax.className = 'tituloTrendMax';
+titugifMax.textContent = titulo;
+iconDiv.className = 'iconDiv';
+
+containerX.appendChild(modal);
+modal.appendChild(closeMax);
+modal.appendChild(containMax);
+closeMax.appendChild(imgClose);
+containMax.appendChild(gifMax);
+containMax.appendChild(infoDiv);
+infoDiv.appendChild(titugifMax);
+infoDiv.appendChild(iconDiv);
+iconDiv.appendChild(iconFav[b]);
+iconDiv.appendChild(iconDownload[b]);
+
+iconFav[b].addEventListener('click',()=>{
+  if(iconFav[b].style.opacity = '0.5'){
+    iconFav[b].style.opacity = '1';
+  }
+})
+}
 function chequearCorazon(id){
-
   if(localStorage.hasOwnProperty("favoritoGif"+id) ==true){
     return true;
   }else{
     return false;
   }
 }
-
 function guardaFavoritos(a,url,tit,id){
 
   let fav = iconFav[a];
@@ -186,14 +337,6 @@ function guardaFavoritos(a,url,tit,id){
   })
 }
 
-let arrayGuardado = [];
-function recargarArray(){
-  let guardado = localStorage.getItem("FAVORITOS");
-  arrayGuardado = JSON.parse(guardado);
-  console.log(arrayGuardado);
-}
-recargarArray();
-
 class Favorito{
   constructor(url,titulo,id){
       this.url = url;
@@ -201,17 +344,14 @@ class Favorito{
       this.id = id;
   }
 }
-
 let favoritos = [];
 let nuevoFavorito;
-
 function agregarFavorito(param1, param2, param3){
 
   nuevoFavorito = new Favorito(param1, param2, param3);
   favoritos.push(nuevoFavorito);
   return nuevoFavorito;
 }
-
 function quitarFavorito(id){
 
   var eliminar = id;
@@ -223,16 +363,16 @@ function quitarFavorito(id){
       }
   });
 }
-function descargaGif(url,a){
+
+function descargaGif(url,a,titulo){
   iconDownload[a].addEventListener("click", () =>{
     var x=new XMLHttpRequest();
     x.open("GET", url, true);
     x.responseType = 'blob';
-    x.onload=function(e){download(x.response, "descarga.gif", "image/gif" ); }
+    x.onload=function(e){download(x.response, titulo+".gif", "image/gif" ); }
     x.send();
   });
 }
-
 function download(data, strFileName, strMimeType) {
   var self = window, // this script is only for browsers anyway...
     defaultMime = "application/octet-stream", // this default mime also triggers iframe downloads
@@ -351,6 +491,7 @@ async function getGif(url, value, api_key, number){
   let endpoint = `http://${url}?q=${value}&api_key=${api_key}limit=${number}&lang=es`;
 }
 
+
 /*
 Para luego en la página de favoritos podrías hacer un listado simple:
 
@@ -374,3 +515,5 @@ for (var x = 0; x < favoritos.length; x++) {
 // agregamos el producto donde correspona
 document.querySelector("#favoritos").appendChild(ul);
 */
+
+

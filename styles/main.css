@@ -161,8 +161,8 @@ object {
 /*----FIN DE BARRA DE NAVEGACION ------   >*/
 
 /*  overflow auto y scroll snap----https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type  */
-/*  https://developers.giphy.com/docs/resource/#code-examples  */
 
+/*-----INICIO MAIN---*/
 body {
     font-family: Montserrat ,sans-serif; 
 }
@@ -295,7 +295,7 @@ object {
     margin: auto;
     display: none;
 }
-/*GRID DE RESULTADOS x12 --MODO MOBILE */
+/*GRID DE RESULTADOS x12 --MODO MOBILE 
 #tituloBusqueda {
     text-align: center;
     margin-top: 43px;
@@ -303,7 +303,7 @@ object {
     color: #572EE5;
 }
 .resultados_container{
-    display: none;  /* DISPLAY CAMBIADO DESDE JS */
+    display: none;  /* DISPLAY CAMBIADO DESDE JS 
 }
 .resultados {
     display: grid;
@@ -431,10 +431,10 @@ object {
     margin: 0 11px 0 11px;
     flex: none;
     width: 243px;
-    /*background-image: url(https://i.pinimg.com/originals/0f/53/5a/0f535ac4dfeef3179931a10802b74dc8.jpg);*/
     background-position: center; 
     background-repeat: no-repeat; 
-    background-size: cover; 
+    background-size: cover;
+    cursor: pointer;
 }
 
 .containerX .grid-itemx:first-child {
@@ -443,6 +443,7 @@ object {
 .containerX .grid-itemx:last-child {
     margin-right: 0px;
 }
+/*
 .containerX .blue {
         width: 100%;
         height: 100%;
@@ -451,14 +452,16 @@ object {
 }
 .containerX .blue:hover {
         opacity: .9;
-}
+}*/
+
 .containerX .cardIcons {
-        display: flex;
+        display: none;
         justify-content: flex-end;
         width: 100%;
         height: 100%;
         opacity: 0;
 }
+/*
 .containerX .cardIcons:hover {
         background-color: #572EE5;
         opacity: 1;
@@ -478,7 +481,6 @@ object {
         opacity: 1;
 }
 
-
 .containerX .grid-itemx .tituloTrend {
     font-family: Roboto ,sans-serif;
     width: 90%;
@@ -486,13 +488,193 @@ object {
     line-height: 19px;
     font-size: 16px;
     color: white;
-
     margin-left: 10px;
     transform: translateY(-50px);
 
 }
+*/
 /*------------------------------------------------XXX*/
+/*Div QUE APARECE PARA VISUALIZAR EL GIF EN TAMAÑO MAXIMO MODO MOBILE*/
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: white; 
+    overflow: auto;
+}
+.close {
+    position: absolute;
+    top: 10vh;
+    right: 8vw;
+    cursor: pointer;
+    }
+.gifMaxContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16vh;
+}
+.gifMaxContainer .gifMax {
+    width: 84vw;
+    height: auto;
+    box-shadow: 0px 0px 15px 5px #572EE5;
+    border-radius: 5px;
+}
+.gifMaxContainer .infoDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 84vw;
+    margin-top: 22px;
+}
 
+.gifMaxContainer .infoDiv .tituloTrendMax{
+    font-family: Roboto ,sans-serif;
+    font-weight: bold;
+    line-height: 19px;
+    font-size: 16px;
+    color: black;
+}
+.gifMaxContainer .infoDiv .iconDiv {
+    display: flex;
+}
+.gifMaxContainer .infoDiv .iconDiv img {
+    height: 29px;
+    width: 29px;
+    background-color: white;
+    padding: 6px;
+    border: 1px solid #9CAFC3;
+    border-radius: 6px;
+    margin-left: 21px;
+    opacity: 0.5;
+    box-shadow: 0px 0px 5px 3px #572EE5;
+}
+.gifMaxContainer .infoDiv .iconDiv img:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+/*--------PAGINAS APARTE------------------*/
+/*------SECCION FAVORITOS MODO MOBILE---------------->*/
+
+.favoritosResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 11px;
+}
+.favoritosResults .tituFav {
+    display: flex;
+    flex-direction: column;
+}
+.favoritosResults .tituFav h1 {
+    font-family: Montserrat ,sans-serif;
+    font-size: 25px;
+    color: #572EE5;
+    text-align: center;
+    line-height: 30px; 
+}
+.favoritosResults .estadoFav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 46px;
+    text-align: center;
+    width: 80%;
+}
+.favoritosResults .estadoFav img {
+    width: 76px;
+    height: 54px;
+}
+.favoritosResults .estadoFav h1 {
+    color: #572EE5;
+    margin-top: 10px;
+}
+/*-----------------*/
+.favoritos {
+    display: grid;
+    margin-top: 50px;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    grid-column-gap: 5vw;
+    grid-row-gap: 5vw;
+    grid-template-columns: auto auto;
+}
+
+.favoritos .grid-itemfav {
+    width: 41vw;
+    height: 32vw;
+    /*background-image: url(https://i.pinimg.com/originals/0f/53/5a/0f535ac4dfeef3179931a10802b74dc8.jpg);*/
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+
+.favoritos .grid-itemfav .bluefav {
+    width: 100%;
+    height: 100%;
+    background-color: #572EE5;
+    opacity: 0;
+}
+.favoritos .grid-itemfav .bluefav:hover {
+    opacity: .9;
+}
+.favoritos .grid-itemfav .bluefav .cardIconsfav {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.favoritos .grid-itemfav .bluefav .cardIconsfav:hover {
+    background-color: #572EE5;
+    opacity: 1;
+}
+.favoritos .grid-itemfav .bluefav .cardIconsfav .iconfav {
+    height: 29px;
+    width: 29px;
+    background-color: white;
+    opacity: .5;
+    padding: 6px;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.favoritos .grid-itemfav .bluefav .cardIconsfav .iconfav:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+.favoritos .grid-itemfav .tituloFav {
+    font-size: 8px;
+    margin-left: 10px;
+    transform: translateY(-50px);
+    color: white;
+    width: 20vw;
+}
+.verMasfav{
+    margin-top: 78px;
+    text-align: center;
+    cursor: pointer;
+}
+.verMasfav .verMasfavA{
+    color: #572EE5;
+    background-color: white;
+    border: solid 1px #572EE5;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 13px;
+    width: 127px;
+    height: 50px;
+    padding: 18px 31.5px 16px 31.5px;
+}
+.verMasfav .verMasfavA:hover{
+    color: white;
+    background-color: #572EE5;
+    border: none;
+}
+/*----------FIN FAVORITOS--------------------->*/
 
 /*-----FOOTER----------------------------*/
 footer {
@@ -525,21 +707,7 @@ footer h4:last-child {
     margin-bottom: 23px;
 }
 
-/*--------PAGINAS APARTE------------------*/
-/*FAVORITOS*/
-.favs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 11px;
-}
-.favs h1 {
-    font-family: Montserrat ,sans-serif;
-    font-size: 25px;
-    color: #572EE5;
-    text-align: center;
-    line-height: 30px; 
-}
+
 
 
 
@@ -598,6 +766,69 @@ footer h4:last-child {
         height: 20px;
         cursor: pointer;
         margin-right: 20px;
+    }
+    /*Div QUE APARECE PARA VISUALIZAR EL GIF EN TAMAÑO MAXIMO*/
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        background-color: white; 
+        overflow: auto;
+    }
+    .close {
+        position: absolute;
+        top: 8vh;
+        right: 10vw;
+        cursor: pointer;
+        }
+    .gifMaxContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20vh;
+    }
+    .gifMaxContainer .gifMax {
+        width: 70vw;
+        box-shadow: 0px 0px 15px 5px #572EE5;
+        border-radius: 5px;
+    }
+    .gifMaxContainer .infoDiv {
+        display: flex;
+        justify-content: space-between;
+        width: 70vw;
+        margin-top: 22px;
+        margin-bottom: 22px;
+    }
+
+    .gifMaxContainer .infoDiv .tituloTrendMax{
+        font-family: Roboto ,sans-serif;
+        font-weight: bold;
+        line-height: 19px;
+        font-size: 16px;
+        color: black;
+    }
+    .gifMaxContainer .infoDiv .iconDiv {
+        display: flex;
+        justify-content: space-around;
+    }
+    .gifMaxContainer .infoDiv .iconDiv img {
+        height: 29px;
+        width: 29px;
+        background-color: white;
+        padding: 6px;
+        border: 1px solid #9CAFC3;
+        border-radius: 6px;
+        margin-left: 21px;
+        opacity: 0.5;
+        box-shadow: 0px 0px 5px 3px #572EE5;
+    }
+    .gifMaxContainer .infoDiv .iconDiv img:hover {
+        cursor: pointer;
+        opacity: 1;
     }
     
     /*ESTE BOX SE ACTIVA PARA LAS SUGERENCIAS DE BUSQUEDA*/
@@ -672,7 +903,105 @@ footer h4:last-child {
         margin-top: 0px;
         margin-bottom: 0px;
     }
+    /*--------PAGINAS APARTE------------------*/
+    /*------SECCION FAVORITOS MODO IPAD---------------->*/
 
+    .favoritosResults {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 11px;
+    }
+    .favoritosResults .tituFav {
+        display: flex;
+        flex-direction: column;
+    }
+    .favoritosResults .tituFav h1 {
+        font-family: Montserrat ,sans-serif;
+        font-size: 25px;
+        color: #572EE5;
+        text-align: center;
+        line-height: 30px; 
+    }
+    .favoritosResults .estadoFav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 46px;
+        text-align: center;
+        width: 80%;
+    }
+    .favoritosResults .estadoFav img {
+        width: 76px;
+        height: 54px;
+    }
+    .favoritosResults .estadoFav h1 {
+        color: #572EE5;
+        margin-top: 10px;
+    }
+    /*-----------------*/
+    .favoritos {
+        display: grid;
+        margin-top: 50px;
+        margin-right: 2vw;
+        margin-left: 2vw;
+        grid-column-gap: 2vw;
+        grid-row-gap: 2vw;
+        grid-template-columns: auto auto auto;
+    }
+
+    .favoritos .grid-itemfav {
+        width: 30vw;
+        height: 24vw;
+        /*background-image: url(https://i.pinimg.com/originals/0f/53/5a/0f535ac4dfeef3179931a10802b74dc8.jpg);*/
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: cover; 
+    }
+
+    .favoritos .grid-itemfav .bluefav {
+        width: 100%;
+        height: 100%;
+        background-color: #572EE5;
+        opacity: 0;
+    }
+    .favoritos .grid-itemfav .bluefav:hover {
+        opacity: .9;
+    }
+    .favoritos .grid-itemfav .bluefav .cardIconsfav {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    .favoritos .grid-itemfav .bluefav .cardIconsfav:hover {
+        background-color: #572EE5;
+        opacity: 1;
+    }
+    .favoritos .grid-itemfav .bluefav .cardIconsfav .iconfav {
+        height: 29px;
+        width: 29px;
+        background-color: white;
+        opacity: .5;
+        padding: 6px;
+        border-radius: 6px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .favoritos .grid-itemfav .bluefav .cardIconsfav .iconfav:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+    .favoritos .grid-itemfav .tituloFav {
+        font-size: 12px;
+        margin-left: 10px;
+        transform: translateY(-50px);
+        color: white;
+        width: 20vw;
+    }
+
+    /*----------FIN FAVORITOS--------------------->*/
 
 
 
@@ -680,7 +1009,7 @@ footer h4:last-child {
 
 @media screen and (min-width: 1024px){
 
-    /*GRID DE RESULTADOS x12 --MODO DESKTOP */
+    /*GRID DE RESULTADOS x12 --MODO DESKTOP 
     #tituloBusqueda{
         margin: auto;
         margin-top: 82px;
@@ -699,7 +1028,7 @@ footer h4:last-child {
     .resultados .grid-item {
         width: 22vw;
         height: 17vw;
-    }
+    }*/
 
     /*SLIDER MODO DESKTOP----------------------------->>>*/
     .trendingGifos {
@@ -780,7 +1109,7 @@ footer h4:last-child {
             background-color: #572EE5;
             opacity: 1;
     }
-    .containerX .cardIcons .icon {
+    .containerX .cardIcons #icon {
             height: 29px;
             width: 29px;
             background-color: white;
@@ -790,11 +1119,12 @@ footer h4:last-child {
             margin-top: 10px;
             margin-right: 10px;
     }
-    .containerX .cardIcons .icon:hover {
+    .containerX .cardIcons #icon:hover {
             cursor: pointer;
             opacity: 1;
     }
     .containerX .grid-itemx .tituloTrend {
+            /*display: block;*/
             font-family: Roboto ,sans-serif;
             font-weight: bold;
             width: 90%;
@@ -805,8 +1135,179 @@ footer h4:last-child {
             margin-left: 10px;
             transform: translateY(-50px);
     }
+
+    /*Div QUE APARECE PARA VISUALIZAR EL GIF EN TAMAÑO MAXIMO*/
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        background-color: white; 
+        overflow: auto;
+    }
+    .close {
+        position: absolute;
+        top: 8vh;
+        right: 20vw;
+        cursor: pointer;
+      }
+    .gifMaxContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+        width: fit-content;
+        
+    }
+    .gifMaxContainer .gifMax {
+        width: unset;
+        height: unset;
+        box-shadow: 0px 0px 15px 5px #572EE5;
+        border-radius: 5px;
+    }
+    .gifMaxContainer .infoDiv {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        margin-top: 22px;
+    }
+
+    .gifMaxContainer .infoDiv .tituloTrendMax{
+        font-family: Roboto ,sans-serif;
+        font-weight: bold;
+        line-height: 19px;
+        font-size: 16px;
+        color: black;
+    }
+    .gifMaxContainer .infoDiv .iconDiv {
+        display: flex;
+        justify-content: space-around;
+    }
+    .gifMaxContainer .infoDiv .iconDiv img {
+        height: 29px;
+        width: 29px;
+        background-color: white;
+        padding: 6px;
+        border: 1px solid #9CAFC3;
+        border-radius: 6px;
+        margin-left: 21px;
+        opacity: 0.5;
+        box-shadow: 0px 0px 5px 3px #572EE5;
+    }
+    .gifMaxContainer .infoDiv .iconDiv img:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
     /*------------------------------------------------XXX*/ 
+        /*--------PAGINAS APARTE------------------*/
+    /*------SECCION FAVORITOS MODO IPAD---------------->*/
+
+    .favoritosResults {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 11px;
+    }
+    .favoritosResults .tituFav {
+        display: flex;
+        flex-direction: column;
+    }
+    .favoritosResults .tituFav h1 {
+        font-family: Montserrat ,sans-serif;
+        font-size: 25px;
+        color: #572EE5;
+        text-align: center;
+        line-height: 30px; 
+    }
+    .favoritosResults .estadoFav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 46px;
+        text-align: center;
+        width: 80%;
+    }
+    .favoritosResults .estadoFav img {
+        width: 76px;
+        height: 54px;
+    }
+    .favoritosResults .estadoFav h1 {
+        color: #572EE5;
+        margin-top: 10px;
+    }
+    /*-----------------*/
+    .favoritos {
+        display: grid;
+        margin-top: 50px;
+        margin-right: 2vw;
+        margin-left: 2vw;
+        grid-column-gap: 2vw;
+        grid-row-gap: 2vw;
+        grid-template-columns: auto auto auto auto;
+    }
+
+    .favoritos .grid-itemfav {
+        width: 22vw;
+        height: 17vw;
+        /*background-image: url(https://i.pinimg.com/originals/0f/53/5a/0f535ac4dfeef3179931a10802b74dc8.jpg);*/
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: cover; 
+    }
+
+    .favoritos .grid-itemfav .bluefav {
+        width: 100%;
+        height: 100%;
+        background-color: #572EE5;
+        opacity: 0;
+    }
+    .favoritos .grid-itemfav .bluefav:hover {
+        opacity: .9;
+    }
+    .favoritos .grid-itemfav .bluefav .cardIconsfav {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    .favoritos .grid-itemfav .bluefav .cardIconsfav:hover {
+        background-color: #572EE5;
+        opacity: 1;
+    }
+    .favoritos .grid-itemfav .bluefav .cardIconsfav .iconfav {
+        height: 29px;
+        width: 29px;
+        background-color: white;
+        opacity: .5;
+        padding: 6px;
+        border-radius: 6px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .favoritos .grid-itemfav .bluefav .cardIconsfav .iconfav:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+    .favoritos .grid-itemfav .tituloFav {
+        font-size: 12px;
+        margin-left: 10px;
+        transform: translateY(-50px);
+        color: white;
+        width: 20vw;
+    }
+    /*----------FIN FAVORITOS--------------------->*/
 }
+
+
+
 
 /* USADO PARA APARECER HTML OCULTO*/
 .displayBlocker {

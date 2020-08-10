@@ -1,4 +1,8 @@
 const APIKEY = "IPDmvhDzm0liJgSooGZzCeivUyTZZ82L";
+// VARIABLES PARA MEDIAQUERYS
+let mediaMobile = window.matchMedia("(max-width: 768px)");
+let mediaIpad = window.matchMedia("(min-width: 768px) and (max-width : 1024px)");
+let mediaDesktop = window.matchMedia("(min-width: 1025px)");
 
 let arrayGuardado = [];
 function recargarArray(){
@@ -29,6 +33,15 @@ function desplegarFavoritos(){
   verMasFav.appendChild(verMasFavA);
   verMasFavA.textContent = 'VER MÁS';
 
+  //FUNCION PARA VISUALIZAR PRIMEROS 12 GIFS
+  for(x=0; x<arrayGuardado.length && x<=11; x++){
+    //RECUPERO INFORMACION DE GIF GUARDADOS
+    let urlFav = arrayGuardado[x].url;
+    let titFav = arrayGuardado[x].tit;
+    let idFav = arrayGuardado[x].id;
+    //LOS AGREGO AL CONTENEDOR FAVORITUS (GRID)
+    favoritus.appendChild(añadirFavoritos(urlFav,titFav,idFav,x));
+  }
   //FUNCION PARA VISUALIZAR 12 GIFS MAS CON BOTON DE VER MÁS
   let largo = 12;
   verMasFavA.addEventListener('click',()=>{
@@ -42,51 +55,110 @@ function desplegarFavoritos(){
       let titFav = arrayGuardado[x].tit;
       let idFav = arrayGuardado[x].id;
       //LOS AGREGO AL CONTENEDOR FAVORITUS (GRID)
-      favoritus.appendChild(añadirFavoritos(urlFav,titFav));
-      
+      favoritus.appendChild(añadirFavoritos(urlFav,titFav,idFav,x));
     }
     if(largo>arrayGuardado.length){
-      verMasFavA.textContent = 'YA NO TIENES MÁS GIFS!';
+      verMasFavA.textContent = 'YA NO TIENES MÁS GIFS GUARDADOS!';
     }
   })
-
-  for(x=0; x<arrayGuardado.length && x<=11; x++){
-    //RECUPERO INFORMACION DE GIF GUARDADOS
-    let urlFav = arrayGuardado[x].url;
-    let titFav = arrayGuardado[x].tit;
-    let idFav = arrayGuardado[x].id;
-    //LOS AGREGO AL CONTENEDOR FAVORITUS (GRID)
-    favoritus.appendChild(añadirFavoritos(urlFav,titFav));
-  }
-
+  //OCULTO MENSAJE DE NO HAY GIFS
   if(arrayGuardado.length>0){
     estadoFav.style.display = 'none';
   }
+  //OCULTO BOTON DE VER MAS SI NO HAY GIFS
   if(arrayGuardado.length<=0){
     verMasFav.style.display = 'none';
   }
+
 }
 desplegarFavoritos();
 
-function añadirFavoritos(url,titulo){
+function añadirFavoritos(url,titulo,id,x){
 
   let gridFavorito = document.createElement('div');
   let blue = document.createElement('div');
   let cardIconFav = document.createElement('div');
+  let divFav1 = document.createElement('div');
+  let divFav2 = document.createElement('div');
+  let divFav3 = document.createElement('div');
+  let iconFavFav = document.createElement('img');
+  let iconDownloadFav = document.createElement('img');
+  let iconMaxFav = document.createElement('img');
   let tituloFav = document.createElement('h4');
   
   gridFavorito.className = 'grid-itemfav';
   blue.className = 'bluefav';
   cardIconFav.className = 'cardIconsfav';
   tituloFav.className = 'tituloFav';
-  
+  iconFavFav.className = 'iconfav';
+  iconDownloadFav.className = 'iconfav';
+  iconMaxFav.className = 'iconfav';
+
+  iconFavFav.setAttribute('src','./images/icon-fav-active.svg');
+  iconDownloadFav.setAttribute('src','./images/icon-download.svg');
+  iconMaxFav.setAttribute('src','./images/icon-max.svg');
+
   gridFavorito.appendChild(blue);
   blue.appendChild(cardIconFav);
   blue.appendChild(tituloFav);
+  divFav1.appendChild(iconFavFav);
+  divFav2.appendChild(iconDownloadFav);
+  divFav3.appendChild(iconMaxFav);
+  cardIconFav.appendChild(divFav1);
+  cardIconFav.appendChild(divFav2);
+  cardIconFav.appendChild(divFav3);
+  divFav1.appendChild(iconFavFav);
+  divFav2.appendChild(iconDownloadFav);
   
   gridFavorito.style.backgroundImage = 'url('+url+')';
   tituloFav.textContent = titulo;
+  
+  //AÑADO FUNCION DE DESCARGA 
+  iconDownloadFav.addEventListener('click',()=>{
+    var x=new XMLHttpRequest();
+    x.open("GET", url, true);
+    x.responseType = 'blob';
+    x.onload=function(e){download(x.response, titulo+".gif", "image/gif" );}
+    x.send();
+  })
 
+  //FUNCION DE MAXIMIZADO
+  if(mediaDesktop.matches){
+    
+    iconMaxFav.addEventListener('click', () => añadoDomMaxFav(x,url,titulo,iconFavFav,iconDownloadFav,divFav1,divFav2));
+
+  }else if(mediaMobile.matches || mediaIpad.matches){
+
+    gridFavorito.addEventListener('click', () => añadoDomMaxFav(x,url,titulo,iconFavFav,iconDownloadFav,divFav1,divFav2));
+  }
+
+
+  iconFavFav.addEventListener('click',()=>{
+
+    //TOMO DATOS 
+    var datos = { url: url, tit: titulo, id: id};
+
+    //RECUPERO INFO EN LOCAL STORAGE
+    var favoritos = localStorage.getItem("FAVORITOS") || "[]";
+    favoritos = JSON.parse(favoritos);
+
+    //BUSCO SI EXISTE AL CLICKEAR CORAZON ENTONCES LO QUITO, SINO EXISTE TENGO QUE AGREGARLO
+    var posLista = favoritos.findIndex(function(e) { return e.id == datos.id; });
+
+    if (posLista > -1) {
+      // SI ESTA, LO QUITO;
+      favoritos.splice(posLista, 1);
+    }
+
+    //GUARDO LA LISTA DE FAVORITOS
+    localStorage.setItem("FAVORITOS", JSON.stringify(favoritos));
+    //ELIMINO DEL LOCALSTORAGE QUE CONTROLA LOS CORAZONES ACTIVOS
+    localStorage.removeItem("favoritoGif"+id);
+    //REFRESCO LA PAGINA CADA VEZ QUE SE ELIMINA UN FAVORITO
+    location.reload();
+  })
+
+  //DEVUELVO EL ITEM DE GRID ARMADO
   return gridFavorito;
 }
 
@@ -112,24 +184,7 @@ icon.addEventListener("click",()=>{
 
 //----------------------------------------------------------XXX
 
-//MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
-let makeGif = document.getElementById('makegif');
-let divgifCreatorBtn = document.getElementById('gif_creator');
 
-makeGif.addEventListener('mouseover',()=>{
-  if(modoNoche.checked !== true){
-    crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');
-  }else{
-    crearGif.setAttribute('src','./images/button-crear-gifo-black.svg');
-  }
-})
-makeGif.addEventListener('mouseout',()=>{
-  if(modoNoche.checked !== true){
-    crearGif.setAttribute('src','./images/button-crear-gifo.svg');
-  }else{
-    crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');
-  }
-})
 
 //----------CAMBIO A DARK THEME--------------------->>>
 
@@ -182,10 +237,11 @@ function cambioIconos(){
 //----GIFCARDS------------------------------------------------------------------------------------------------------
 let trendCard = document.querySelectorAll('.grid-itemx');
 let gifIcons = document.getElementById('cardIcons');
+let div1Trend = document.getElementsByClassName('div1');
+let div2Trend = document.getElementsByClassName('div2');
 let tituGif = document.querySelectorAll('.tituloTrend');
 let iconFav = document.querySelectorAll('.fav');
 let iconDownload = document.querySelectorAll('.download');
-
 
 
 //REQUEST DE 5 TRENDINGS PARA SECCION TRENDINGS---------------------------------------------------------------------
@@ -224,10 +280,6 @@ function pedidoTrendings(){
   });
 }
 pedidoTrendings();
-// VARIABLES PARA MEDIAQUERYS
-let mediaMobile = window.matchMedia("(max-width: 768px)");
-let mediaIpad = window.matchMedia("(min-width: 768px) and (max-width : 1024px)");
-let mediaDesktop = window.matchMedia("(min-width: 1025px)");
 
 //ELEMENTOS PARA VISUALIZAR GIF AL MAX
 let containerX = document.getElementsByClassName('containerX')[0];
@@ -251,51 +303,87 @@ function maximizarGif(b,url,titulo){
       trendCard[b].addEventListener('click', () => añadoDomMax(b,url,titulo));
     }
 
-  closeMax.addEventListener('click',()=>{
-    modal.style.display = 'none';
-  })
-  //CIERRO CON ESCAPE
-  document.addEventListener("keydown", function(event) {
-    if(event.keyCode === 27){
-      modal.style.display = 'none';
-    }
-  });
 }
+
 function añadoDomMax(b,url,titulo){
 
-modal.innerHTML = '';
-modal.style.display = 'block';
+  modal.innerHTML = '';
+  modal.style.display = 'block';
 
-closeMax.setAttribute('href',"favoritos.html")
-imgClose.setAttribute('src', "./images/button-close.svg");
-gifMax.setAttribute('src', url);
+  imgClose.setAttribute('src', "./images/button-close.svg");
+  gifMax.setAttribute('src', url);
 
-modal.className = 'modal';
-closeMax.className = 'close';
-containMax.className = 'gifMaxContainer';
-gifMax.className = 'gifMax';
-infoDiv.className = 'infoDiv';
-titugifMax.className = 'tituloTrendMax';
-titugifMax.textContent = titulo;
-iconDiv.className = 'iconDiv';
+  modal.className = 'modal';
+  closeMax.className = 'close';
+  containMax.className = 'gifMaxContainer';
+  gifMax.className = 'gifMax';
+  infoDiv.className = 'infoDiv';
+  titugifMax.className = 'tituloTrendMax';
+  titugifMax.textContent = titulo;
+  iconDiv.className = 'iconDiv';
 
-containerX.appendChild(modal);
-modal.appendChild(closeMax);
-modal.appendChild(containMax);
-closeMax.appendChild(imgClose);
-containMax.appendChild(gifMax);
-containMax.appendChild(infoDiv);
-infoDiv.appendChild(titugifMax);
-infoDiv.appendChild(iconDiv);
-iconDiv.appendChild(iconFav[b]);
-iconDiv.appendChild(iconDownload[b]);
-
-iconFav[b].addEventListener('click',()=>{
-  if(iconFav[b].style.opacity = '0.5'){
-    iconFav[b].style.opacity = '1';
-  }
-})
+  containerX.appendChild(modal);
+  modal.appendChild(closeMax);
+  modal.appendChild(containMax);
+  closeMax.appendChild(imgClose);
+  containMax.appendChild(gifMax);
+  containMax.appendChild(infoDiv);
+  infoDiv.appendChild(titugifMax);
+  infoDiv.appendChild(iconDiv);
+  iconDiv.appendChild(iconFav[b]);
+  iconDiv.appendChild(iconDownload[b]);
+  
+  iconFav[b].addEventListener('click',()=>{
+    if(iconFav[b].style.opacity = '0.5'){
+      iconFav[b].style.opacity = '1';
+    }
+  })
+  closeMax.addEventListener('click',()=>{
+    div1Trend[b].appendChild(iconFav[b]);
+    div2Trend[b].appendChild(iconDownload[b]);
+    modal.style.display = "none";
+  })
 }
+function añadoDomMaxFav(b,url,titulo,iconFav,iconDownload,div1,div2){
+
+  modal.innerHTML = '';
+  modal.style.display = 'block';
+
+  imgClose.setAttribute('src', "./images/button-close.svg");
+  gifMax.setAttribute('src', url);
+
+  modal.className = 'modal';
+  closeMax.className = 'close';
+  containMax.className = 'gifMaxContainer';
+  gifMax.className = 'gifMax';
+  infoDiv.className = 'infoDiv';
+  titugifMax.className = 'tituloTrendMax';
+  titugifMax.textContent = titulo;
+  iconDiv.className = 'iconDiv';
+
+  containerX.appendChild(modal);
+  modal.appendChild(closeMax);
+  modal.appendChild(containMax);
+  closeMax.appendChild(imgClose);
+  containMax.appendChild(gifMax);
+  containMax.appendChild(infoDiv);
+  infoDiv.appendChild(titugifMax);
+  infoDiv.appendChild(iconDiv);
+  iconDiv.appendChild(iconFav);
+  iconDiv.appendChild(iconDownload);
+
+  iconFav.addEventListener('click',()=>{
+    if(iconFav.style.opacity = '0.5'){
+      iconFav.style.opacity = '1';
+    }
+  })
+  closeMax.addEventListener('click',()=>{
+    div1.appendChild(iconFav);
+    div2.appendChild(iconDownload);
+    modal.style.display = "none";
+  })
+}
+
 function chequearCorazon(id){
   if(localStorage.hasOwnProperty("favoritoGif"+id) ==true){
     return true;
@@ -491,29 +579,21 @@ async function getGif(url, value, api_key, number){
   let endpoint = `http://${url}?q=${value}&api_key=${api_key}limit=${number}&lang=es`;
 }
 
+//MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
+let makeGif = document.getElementById('makegif');
+let divgifCreatorBtn = document.getElementById('gif_creator');
 
-/*
-Para luego en la página de favoritos podrías hacer un listado simple:
-
-// leemos los favoritos del localStorage
-var favoritos = localStorage.getItem("favoritos") || "[]";
-favoritos = JSON.parse(favoritos);
-
-// creamos una lista
-var ul = document.createElement("ul");
-// para cada producto en favoritos
-for (var x = 0; x < favoritos.length; x++) {
-  // creamos un elemento de lista
-  var li = document.createElement("li");
-  // con un enlace al producto
-  var a = document.createElement("a");
-  a.href = favoritos[x].url;
-  a.textContent = favoritos[x].nombre;
-  li.appendChild(a);
-  ul.appendChild(li);
-}
-// agregamos el producto donde correspona
-document.querySelector("#favoritos").appendChild(ul);
-*/
-
-
+makeGif.addEventListener('mouseover',()=>{
+  if(modoNoche.checked !== true){
+    crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');
+  }else{
+    crearGif.setAttribute('src','./images/button-crear-gifo-black.svg');
+  }
+})
+makeGif.addEventListener('mouseout',()=>{
+  if(modoNoche.checked !== true){
+    crearGif.setAttribute('src','./images/button-crear-gifo.svg');
+  }else{
+    crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');
+  }
+})

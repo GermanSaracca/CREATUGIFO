@@ -58,6 +58,7 @@ input_gif.addEventListener('click',()=>{
   visual = 0;
   noResults.classList.remove('displayBlocker');
   verMas.classList.remove('displayNoner');
+  verMasA.textContent = 'VER MÁS';
 })
 
 var globalTimeout = null;  
@@ -195,10 +196,10 @@ input_gif.addEventListener("keyup",()=>{
 //FUNCION DE VISUALIZAR 12 GIF MAS CADA VEZ QUE SE PRESIONE EL BOTON 'VER MAS'
 verMas.addEventListener('click',()=>{
   visual += 12;
-
+  
   getGif("api.giphy.com/v1/gifs/search",input_gif.value,APIKEY,"12",visual)
   .then(response=>{
-
+    
     for(a=0; a<response.data.length; a++){
       
       let id= response.data[a].id;// ID DE TRENDING
@@ -208,6 +209,10 @@ verMas.addEventListener('click',()=>{
 
       desplegarResultados(url,tit,id,a,urlDescargo);
       tituloSearch.textContent = input_gif.value;
+    }
+    if(response.data.length == 0){
+
+      verMasA.textContent = "YA NO HAY MAS RESULTADOS";
     }
   }).catch((error)=>{
   console.log("FALLO FETCH POR VER MAS"+error);
@@ -250,6 +255,7 @@ lupanueva.addEventListener('click',()=>{
 sugerencia1.addEventListener('click',()=>{
   noResults.classList.remove('displayBlocker');
   verMas.classList.remove('displayNoner');
+  verMasA.textContent = 'VER MÁS';
   input_gif.value = sugerencia1.textContent;
   grillaGifs.innerHTML = '';
   //FETCH DE BUSQUEDA CON EL VALOR DE ESTA SUGERENCIA
@@ -272,6 +278,7 @@ sugerencia1.addEventListener('click',()=>{
 sugerencia2.addEventListener('click',()=>{
   noResults.classList.remove('displayBlocker');
   verMas.classList.remove('displayNoner');
+  verMasA.textContent = 'VER MÁS';
   input_gif.value = sugerencia2.textContent;
   grillaGifs.innerHTML = '';
   //FETCH DE BUSQUEDA CON EL VALOR DE ESTA SUGERENCIA
@@ -294,6 +301,7 @@ sugerencia2.addEventListener('click',()=>{
 sugerencia3.addEventListener('click',()=>{
   noResults.classList.remove('displayBlocker');
   verMas.classList.remove('displayNoner');
+  verMasA.textContent = 'VER MÁS';
   input_gif.value = sugerencia3.textContent;
   grillaGifs.innerHTML = '';
   //FETCH DE BUSQUEDA CON EL VALOR DE ESTA SUGERENCIA
@@ -316,6 +324,7 @@ sugerencia3.addEventListener('click',()=>{
 sugerencia4.addEventListener('click',()=>{
   noResults.classList.remove('displayBlocker');
   verMas.classList.remove('displayNoner');
+  verMasA.textContent = 'VER MÁS';
   input_gif.value = sugerencia4.textContent;
   grillaGifs.innerHTML = '';
   //FETCH DE BUSQUEDA CON EL VALOR DE ESTA SUGERENCIA
@@ -371,8 +380,6 @@ function sugerencias(busqueda){
     console.log(busqueda);
   }
 };
-
-
 
 function desplegarResultados(url,tit,id,x){
   
@@ -531,7 +538,6 @@ function guardaFavoritosResults(url,tit,id,iconFav){
 
 //----GIFCARDS------------------------------------------------------------------------------------------------------
 let trendCard = document.querySelectorAll('.grid-itemx');
-let gifIcons = document.getElementById('cardIcons');
 let div1Trend = document.getElementsByClassName('div1');
 let div2Trend = document.getElementsByClassName('div2');
 let tituGif = document.querySelectorAll('.tituloTrend');

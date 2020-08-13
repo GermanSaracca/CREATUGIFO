@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css" id="light-theme">
+    <title>CrearGifos</title>
 </head>
 <body>
     <nav class="nav" id="nav">
@@ -18,12 +18,12 @@
         <ul class="nav-links">
             <li>
                 <input type="checkbox" id="modoNoche" hidden>
-                <label for="modoNoche">
-                    <a class="menubtn">Nocturno</a>
+                <label for="modoNoche"  >
+                    <p class="menubtn">Nocturno</p>
                 </label>
             </li>
             <li>
-                <a href=""><p class="menubtn">Favoritos</p></a>
+                <a href="favoritos.html"><p class="menubtn">Favoritos</p></a>
             </li>
             <li>
                 <a href=""><p class="menubtn">Mis Gifos</p></a>
@@ -41,78 +41,45 @@
             </label>
         </div>
     </nav>
-    <main>
-        <section class="favoritosResults">
-            <div class="tituFav">
-                <img src="./images/icon-favoritos.svg" alt="">
-                <h1>Favoritos</h1>
+    <main class="mainGifos">
+        <div class="rectangleContainer">
+            <div class="topCorner">
+                <div class="corner topLeft"></div>
+                <div class="corner topRight"></div>
             </div>
-            <div class="estadoFav" id="estadoFav">
-                <img src="./images/favoritos-sincontenido.svg" alt="" >
-                <h1>"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"</h1>
+            <div class="infoContainer">
+                <h1 class="titleCreate">
+                    Aquí podrás<br>crear tus propios <span>GIFOS</span>
+                </h1>
+                <p class="instructions">
+                    ¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)
+                </p>
+                <video src=""></video>
             </div>
-            <div id="allFavs">
-
+            <div class="bottomCorner">
+                <div class="corner bottomLeft"></div>
+                <div class="corner bottomRight"></div>
             </div>
-        </section>
-        <section class="trendingGifos">
-            <h1>Trending GIFOS</h1>
-            <h2>Mira los últimos<br> GIFOS de nuestra comunidad.</h2>
-            <div class="holster">
-                <div class="containerX " dir="ltr">
-                    <div class="grid-itemx">
-                        <div class="blue">
-                            <div class="cardIcons">
-                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
-                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
-                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
-                            </div>
-                            <h4 class="tituloTrend"></h4>
-                        </div>
-                    </div>
-                    <div class="grid-itemx">
-                        <div class="blue">
-                            <div class="cardIcons">
-                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
-                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
-                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
-                            </div>
-                            <h4 class="tituloTrend"></h4>
-                        </div>
-                    </div>
-                    <div class="grid-itemx">
-                        <div class="blue">
-                            <div class="cardIcons">
-                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
-                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
-                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
-                            </div>
-                            <h4 class="tituloTrend"></h4>
-                        </div>
-                    </div>
-                    <div class="grid-itemx">
-                        <div class="blue">
-                            <div class="cardIcons">
-                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
-                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
-                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
-                            </div>
-                            <h4 class="tituloTrend"></h4>
-                        </div>
-                    </div>
-                    <div class="grid-itemx">
-                        <div class="blue">
-                            <div class="cardIcons">
-                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
-                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
-                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
-                            </div>
-                            <h4 class="tituloTrend">Titulo GIFO</h4>
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <div class="creationInfo">
+            <div class="creationStep">
+                <div class="step" id="step1">1</div>
+                <div class="step" id="step2">2</div>
+                <div class="step" id="step3">3</div>
             </div>
-        </section>
+            <p class="btnRepeat" id="btnRepeat">
+                REPETIR CAPTURA
+            </p>
+        </div> 
+        <hr class="line">
+        <div class="creationBtn">
+            <a class="creationBtnA" href="">COMENZAR</a>
+        </div>
+        <div class="cam">
+            <img src="./images/camara.svg" alt="" id="camSVG">
+            <div class="camGradient"></div>
+        </div>
+        <img class="pelicula" src="./images/pelicula.svg" alt="">
     </main>
     <footer>
         <div class="contRedes">
@@ -131,10 +98,10 @@
         </div>
         <h4>© GIFOS 2020 All Rights Reserved.</h4>
     </footer>
-<script src="favoritos.js"></script>
 <script>
     document.cookie = 'same-site-cookie=foo; SameSite=Lax'; 
     document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
 </script>
+
 </body>
 </html>

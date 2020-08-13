@@ -37,8 +37,6 @@ object {
     font-size: 13px;
     cursor: pointer;
 }
-
-
 .nav-links #gif_creator {
     display: flex;
     justify-content: center;
@@ -250,13 +248,11 @@ object {
 #lupachica {
     fill: #9CAFC3;
 }
-
 /*ESTA LUPA APARECE AL TIPEAR*/
 .lupanueva {
     display: none;  /* <--------- ESTA !! */
     cursor: pointer;
 }
-
 .trendings {
     width: 225px;
     margin: auto;
@@ -348,7 +344,6 @@ object {
     background-color: #572EE5;
     opacity: 0;
 }
-
 .blue .cardIcons {
     display: flex;
     justify-content: flex-end;
@@ -381,7 +376,6 @@ object {
     color: white;
     width: 90%;
 }
-
 .verMas{
     display: none;
     margin-top: 78px;
@@ -409,7 +403,6 @@ object {
 
 .trendingGifos {
     margin-top: 45px;
-
     background-color: #F3F5F8;
     width: 100%;
     height: 430px;
@@ -457,15 +450,12 @@ object {
     background-size: cover;
     cursor: pointer;
 }
-
 .containerX .grid-itemx:first-child {
     margin-left: 0px;
 }
 .containerX .grid-itemx:last-child {
     margin-right: 0px;
 }
-
-
 .containerX .cardIcons {
         display: none;
         justify-content: flex-end;
@@ -473,7 +463,6 @@ object {
         height: 100%;
         opacity: 0;
 }
-
 /*------------------------------------------------XXX*/
 /*Div QUE APARECE PARA VISUALIZAR EL GIF EN TAMAÑO MAXIMO MODO MOBILE*/
 .modal {
@@ -511,7 +500,6 @@ object {
     width: 84vw;
     margin-top: 22px;
 }
-
 .gifMaxContainer .infoDiv .tituloTrendMax{
     font-family: Roboto ,sans-serif;
     font-weight: bold;
@@ -539,7 +527,6 @@ object {
 }
 /*--------PAGINAS APARTE------------------*/
 /*------SECCION FAVORITOS MODO MOBILE---------------->*/
-
 .favoritosResults {
     display: flex;
     flex-direction: column;
@@ -587,19 +574,16 @@ object {
 .favoritos .grid-itemfav {
     width: 41vw;
     height: 32vw;
-    /*background-image: url(https://i.pinimg.com/originals/0f/53/5a/0f535ac4dfeef3179931a10802b74dc8.jpg);*/
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover; 
 }
-
 .favoritos .grid-itemfav .bluefav {
     width: 100%;
     height: 100%;
     background-color: #572EE5;
     opacity: 0;
 }
-
 .favoritos .grid-itemfav .bluefav .cardIconsfav {
     display: flex;
     justify-content: flex-end;
@@ -741,18 +725,8 @@ footer h4:last-child {
         margin-right: 20px;
     }
     
-    /*Div QUE APARECE PARA VISUALIZAR EL GIF EN TAMAÑO MAXIMO*/
-    .modal {
-        display: none; 
-        position: fixed; 
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%; 
-        height: 100%; 
-        background-color: white; 
-        overflow: auto;
-    }
+    /*Div QUE APARECE PARA VISUALIZAR EL GIF EN TAMAÑO MAXIMO MODO IPAD*/
+
     .close {
         position: absolute;
         top: 8vh;
@@ -760,9 +734,6 @@ footer h4:last-child {
         cursor: pointer;
         }
     .gifMaxContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         margin-top: 20vh;
     }
     .gifMaxContainer .gifMax {
@@ -777,34 +748,12 @@ footer h4:last-child {
         margin-top: 22px;
         margin-bottom: 22px;
     }
-
-    .gifMaxContainer .infoDiv .tituloTrendMax{
-        font-family: Roboto ,sans-serif;
-        font-weight: bold;
-        line-height: 19px;
-        font-size: 16px;
-        color: black;
-    }
     .gifMaxContainer .infoDiv .iconDiv {
         display: flex;
         justify-content: space-around;
     }
-    .gifMaxContainer .infoDiv .iconDiv img {
-        height: 29px;
-        width: 29px;
-        background-color: white;
-        padding: 6px;
-        border: 1px solid #9CAFC3;
-        border-radius: 6px;
-        margin-left: 21px;
-        opacity: 0.5;
-        box-shadow: 0px 0px 5px 3px #572EE5;
-    }
-    .gifMaxContainer .infoDiv .iconDiv img:hover {
-        cursor: pointer;
-        opacity: 1;
-    }
-    
+    /*---FIN DIV MAX MODO IPAD----->*/
+
     /*ESTE BOX SE ACTIVA PARA LAS SUGERENCIAS DE BUSQUEDA*/
     .sugerencias_box {
         width: 551px;
@@ -831,56 +780,35 @@ footer h4:last-child {
         line-height: 30px;
     }
 
-/*GRID DE RESULTADOS x12 --MODO IPAD */
-.tituloBusqueda {
-    display: none;
-    text-align: center;
-    margin-top: 43px;
-    margin-bottom: 38px;
-    color: #572EE5;
-    font-size: 25px;
-    line-height: 40px;
-    font-weight: 700;
-}
-.grilla {
-    display: grid;
-    margin-right: 2vw;
-    margin-left: 2vw;
-    grid-column-gap: 2vw;
-    grid-row-gap: 2vw;
-    grid-template-columns: auto auto auto;
-}
-.grilla .resultados .grid-item {
-    width: 30vw;
-    height: 24vw;
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    cursor: pointer;
-}
-.resultados .grid-item .blue {
-    width: 100%;
-    height: 100%;
-    background-color: #572EE5;
-    opacity: 0;
-}
-.blue .cardIcons {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: unset;
-    display: none;
-}
-.grid-item .tituloGrid {
-    margin-left: 10px;
-    transform: translateY(-70px);
-    color: white;
-    width: 90%;
-}
+    /*GRID DE RESULTADOS x12 --MODO IPAD */
+    .grilla {
+        display: grid;
+        margin-right: 2vw;
+        margin-left: 2vw;
+        grid-column-gap: 2vw;
+        grid-row-gap: 2vw;
+        grid-template-columns: auto auto auto;
+    }
+    .grilla .resultados .grid-item {
+        width: 30vw;
+        height: 24vw;
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: cover; 
+        cursor: pointer;
+    }
 
-/*---------FIN GRID DE BUSQUEDA-------------------------*/
+    .blue .cardIcons {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: unset;
+        display: none;
+    }
+    /*---------FIN GRID DE BUSQUEDA----------*/
+
     /*-----FOOTER----------------------------*/
     footer {
         display: flex;
@@ -918,40 +846,6 @@ footer h4:last-child {
     /*--------PAGINAS APARTE------------------*/
     /*------SECCION FAVORITOS MODO IPAD---------------->*/
 
-    .favoritosResults {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 11px;
-    }
-    .favoritosResults .tituFav {
-        display: flex;
-        flex-direction: column;
-    }
-    .favoritosResults .tituFav h1 {
-        font-family: Montserrat ,sans-serif;
-        font-size: 25px;
-        color: #572EE5;
-        text-align: center;
-        line-height: 30px; 
-    }
-    .favoritosResults .estadoFav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 46px;
-        text-align: center;
-        width: 80%;
-    }
-    .favoritosResults .estadoFav img {
-        width: 76px;
-        height: 54px;
-    }
-    .favoritosResults .estadoFav h1 {
-        color: #572EE5;
-        margin-top: 10px;
-    }
-    /*-----------------*/
     .favoritos {
         display: grid;
         margin-top: 50px;
@@ -965,23 +859,11 @@ footer h4:last-child {
     .favoritos .grid-itemfav {
         width: 30vw;
         height: 24vw;
-        /*background-image: url(https://i.pinimg.com/originals/0f/53/5a/0f535ac4dfeef3179931a10802b74dc8.jpg);*/
         background-position: center; 
         background-repeat: no-repeat; 
         background-size: cover; 
         cursor: pointer;
     }
-
-    .favoritos .grid-itemfav .bluefav {
-        width: 100%;
-        height: 100%;
-        background-color: #572EE5;
-        opacity: 0;
-    }
-    /*
-    .favoritos .grid-itemfav .bluefav:hover {
-        opacity: .9;
-    }*/
     .favoritos .grid-itemfav .bluefav .cardIconsfav {
         display: flex;
         justify-content: flex-end;
@@ -990,24 +872,6 @@ footer h4:last-child {
         opacity: 0;
         display: none;
     }
-    .favoritos .grid-itemfav .bluefav .cardIconsfav:hover {
-        background-color: #572EE5;
-        opacity: 1;
-    }
-    .favoritos .grid-itemfav .bluefav .cardIconsfav .iconfav {
-        height: 29px;
-        width: 29px;
-        background-color: white;
-        opacity: .5;
-        padding: 6px;
-        border-radius: 6px;
-        margin-top: 10px;
-        margin-right: 10px;
-    }
-    .favoritos .grid-itemfav .bluefav .cardIconsfav .iconfav:hover {
-        cursor: pointer;
-        opacity: 1;
-    }
     .favoritos .grid-itemfav .tituloFav {
         font-size: 12px;
         margin-left: 10px;
@@ -1015,7 +879,6 @@ footer h4:last-child {
         color: white;
         width: 20vw;
     }
-
     /*----------FIN FAVORITOS--------------------->*/
 }
 
@@ -1023,8 +886,6 @@ footer h4:last-child {
 
     /*GRID DE RESULTADOS x12 --MODO DESKTOP*/
     .tituloBusqueda {
-        display: none;
-        text-align: center;
         margin-top: 82px;
         margin-bottom: 60px;
         color: #572EE5;
@@ -1150,7 +1011,7 @@ footer h4:last-child {
             background-color: #572EE5;
             opacity: 1;
     }
-    .containerX .cardIcons #icon {
+    .containerX .cardIcons .icon {
             height: 29px;
             width: 29px;
             background-color: white;
@@ -1160,7 +1021,7 @@ footer h4:last-child {
             margin-top: 10px;
             margin-right: 10px;
     }
-    .containerX .cardIcons #icon:hover {
+    .containerX .cardIcons .icon:hover {
             cursor: pointer;
             opacity: 1;
     }
@@ -1176,19 +1037,7 @@ footer h4:last-child {
             margin-left: 10px;
             transform: translateY(-50px);
     }
-
     /*Div QUE APARECE PARA VISUALIZAR EL GIF EN TAMAÑO MAXIMO*/
-    .modal {
-        display: none; 
-        position: fixed; 
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%; 
-        height: 100%; 
-        background-color: white; 
-        overflow: auto;
-    }
     .close {
         position: absolute;
         top: 8vh;
@@ -1202,8 +1051,7 @@ footer h4:last-child {
         margin: auto;
         margin-top: 10vh;
         margin-bottom: 10vh;
-        width: fit-content;
-        
+        width: fit-content; 
     }
     .gifMaxContainer .gifMax {
         width: unset;
@@ -1219,71 +1067,15 @@ footer h4:last-child {
         margin-left: 0;
         margin-top: 22px;
     }
-
-    .gifMaxContainer .infoDiv .tituloTrendMax{
-        font-family: Roboto ,sans-serif;
-        font-weight: bold;
-        line-height: 19px;
-        font-size: 16px;
-        color: black;
-    }
     .gifMaxContainer .infoDiv .iconDiv {
         display: flex;
         justify-content: space-around;
     }
-    .gifMaxContainer .infoDiv .iconDiv img {
-        height: 29px;
-        width: 29px;
-        background-color: white;
-        padding: 6px;
-        border: 1px solid #9CAFC3;
-        border-radius: 6px;
-        margin-left: 21px;
-        opacity: 0.5;
-        box-shadow: 0px 0px 5px 3px #572EE5;
-    }
-    .gifMaxContainer .infoDiv .iconDiv img:hover {
-        cursor: pointer;
-        opacity: 1;
-    }
     /*------------------------------------------------XXX*/ 
-        /*--------PAGINAS APARTE------------------*/
+
+    /*--------PAGINAS APARTE------------------*/
     /*------SECCION FAVORITOS MODO DESKTOP---------------->*/
 
-    .favoritosResults {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 11px;
-    }
-    .favoritosResults .tituFav {
-        display: flex;
-        flex-direction: column;
-    }
-    .favoritosResults .tituFav h1 {
-        font-family: Montserrat ,sans-serif;
-        font-size: 25px;
-        color: #572EE5;
-        text-align: center;
-        line-height: 30px; 
-    }
-    .favoritosResults .estadoFav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 46px;
-        text-align: center;
-        width: 80%;
-    }
-    .favoritosResults .estadoFav img {
-        width: 76px;
-        height: 54px;
-    }
-    .favoritosResults .estadoFav h1 {
-        color: #572EE5;
-        margin-top: 10px;
-    }
-    /*-----------------*/
     .favoritos {
         display: grid;
         margin-top: 50px;
@@ -1297,7 +1089,6 @@ footer h4:last-child {
     .favoritos .grid-itemfav {
         width: 22vw;
         height: 17vw;
-        /*background-image: url(https://i.pinimg.com/originals/0f/53/5a/0f535ac4dfeef3179931a10802b74dc8.jpg);*/
         background-position: center; 
         background-repeat: no-repeat; 
         background-size: cover; 
@@ -1345,7 +1136,183 @@ footer h4:last-child {
         width: 20vw;
     }
     /*----------FIN FAVORITOS--------------------->*/
-}
+
+    /*----------SECCION CREAR GIFOS ----------------->*/
+
+    .rectangleContainer {
+        width: 52%;
+        height: 390px;
+        border: solid 1px #572EE5;
+        margin: auto;
+        margin-top: 4px;
+    }
+    .rectangleContainer .topCorner {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 20px 0px 20px;
+    }
+    .rectangleContainer .bottomCorner {
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 20px 20px 20px;
+    }
+    .rectangleContainer .corner {
+        height: 25px;
+        width: 25px;
+        border-color: #50E3C2;
+    }
+    .topLeft{
+        border-top: 2px solid;
+        border-left: 2px solid;
+    }
+    .topRight{
+        border-top: 2px solid;
+        border-right: 2px solid;
+    }
+    .bottomLeft{
+        border-bottom: 2px solid;
+        border-left: 2px solid;
+    }
+    .bottomRight{
+        border-bottom: 2px solid;
+        border-right: 2px solid;
+    }
+    .rectangleContainer .infoContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 300px;
+    }
+    .titleCreate {
+        font-size: 25px;
+        color: #572EE5;
+        text-align: center;
+        line-height: 35px;
+    }
+    .titleCreate span {
+        color: #50E3C2;
+    }
+    .infoContainer .instructions {
+        font-family: Roboto ,sans-serif;
+        font-size: 16px;
+        color: #000000;
+        text-align: center;
+        line-height: 29px;
+        margin-top: 3px;
+    }
+    /* ETIQUETA DE VIDEO , SE POSICIONA SOBRE TODO LO DEMAS Y REPRODUCE LA GRABACION DE CAMARA*/
+    .infoContainer video {
+        display: none;/*PROPIEDA CAMBIADA DESDE JS*/
+        position: absolute;
+        z-index: 1;
+        align-self: center;
+        height: 300px;
+        width: 500px;
+        border: solid 1px black;
+        background-color: violet;
+    }
+    .creationInfo {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        margin-top: 24px;
+        margin-bottom: 19px;
+        width: 688px;
+        height: 32px;
+    }
+    .creationInfo .creationStep {
+        display: flex;
+        justify-content: space-between;
+        width: 147px;
+        position: absolute;
+    }
+    .creationInfo .creationStep .step {
+        height: 32px;
+        width: 32px;
+        color: #572EE5;
+        background-color: white;
+        border: 1px solid #572EE5;
+        border-radius: 50%;
+        font-family: Roboto ,sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+        padding-top: 4px;
+        cursor: pointer;
+    }
+    .creationInfo .creationStep .step:hover {
+        color: white;
+        background-color: #572EE5;
+    }
+    .creationInfo .btnRepeat {
+        display: none; /* SE VISUALIZARA AL PARAR GRABACION*/
+        align-self: center;
+        color: #572EE5;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        transform: translateX(280px);
+    }
+    .creationInfo .btnRepeat:hover {
+        border-bottom: solid 2px #5ED7C6;
+    }
+    .creationInfo .btnRepeat:active {
+        color: #9CAFC3;
+        border-bottom: none;
+    }
+    .line {
+       background-color: #572EE5;
+       height: 6.9px;
+       width: 795px; 
+       margin: auto;
+       border-radius: 15px;
+    }
+    .creationBtn{
+        margin-top: 46px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .creationBtn .creationBtnA{
+        color: #572EE5;
+        background-color: white;
+        border: solid 1px #572EE5;
+        border-radius: 25px;
+        font-weight: 700;
+        font-size: 13px;
+        width: 127px;
+        height: 50px;
+        padding: 18px 31.5px 16px 31.5px;
+    }
+    .creationBtnA:hover {
+        color: white;
+        background-color: #572EE5;
+    }
+    .cam {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: auto;
+        margin-left: 8vw;
+        transform: translateY(-425px);
+    }
+    .cam #camSVG {
+        height: 162px;
+        width: 123px;
+    }
+    .cam .camGradient {
+        height: 151px;
+        width: 91px;
+        background-image: linear-gradient(267deg, rgba(136,243,226,0.00) 22%, #50E3C2 100%);
+        clip-path: polygon(0 63%, 0 37%, 100% 0, 100% 100%);
+    }
+    .pelicula {
+        position: absolute;
+        margin-left: 80vw;
+        transform: translateY(-155px);
+    }
+}   
 
 /* USADO PARA APARECER HTML OCULTO*/
 .displayBlocker {

@@ -236,7 +236,7 @@ function cambioIconos(){
 
 //----GIFCARDS------------------------------------------------------------------------------------------------------
 let trendCard = document.querySelectorAll('.grid-itemx');
-let gifIcons = document.getElementById('cardIcons');
+
 let div1Trend = document.getElementsByClassName('div1');
 let div2Trend = document.getElementsByClassName('div2');
 let tituGif = document.querySelectorAll('.tituloTrend');

@@ -54,6 +54,7 @@ verMas.appendChild(verMasA);
 verMasA.textContent = 'VER MÁS';
 
 let visual = 0;
+//RESETEO EN CASO DE HABER ELEMENTOS MODIFICADOS DINAMICAMENTE AL CLICKEAR EL INPUT DE BUSQUEDA
 input_gif.addEventListener('click',()=>{
   visual = 0;
   noResults.classList.remove('displayBlocker');
@@ -62,6 +63,7 @@ input_gif.addEventListener('click',()=>{
 })
 
 var globalTimeout = null;  
+//INPUT DE BUSQUEDA 
 input_gif.addEventListener("keyup",()=>{
 
   if (globalTimeout != null) {
@@ -129,7 +131,7 @@ input_gif.addEventListener("keyup",()=>{
     verMas.classList.remove('displayNoner');
   }
 
-  //INICIA BUSQUEDA CON EL ENTER DE EL INPUT INGRESADO
+  //INICIA BUSQUEDA CON EL ENTER DE LA BUSQUEDA INGRESADA
   if(event.wich == 13 || event.keyCode == 13 && input_gif.value !== ""){
     grillaGifs.innerHTML = "";
     tituloSearch.classList.add('displayBlocker');
@@ -159,7 +161,7 @@ input_gif.addEventListener("keyup",()=>{
     })
   }
 
-  // ACCION DE CERRAR SUGERENCIAS Y RESETEAR CON LA CRUZ.
+  //ACCION DE CERRAR SUGERENCIAS Y RESETEAR CON LA CRUZ.
   lupa.addEventListener("click",()=>{
     grillaGifs.innerHTML = "";
     if(modoNoche.checked !== true){
@@ -188,9 +190,7 @@ input_gif.addEventListener("keyup",()=>{
       tituloSearch.classList.remove('displayBlocker');
       verMas.classList.remove('displayBlocker');
     }
-
   })
-  
 })
 
 //FUNCION DE VISUALIZAR 12 GIF MAS CADA VEZ QUE SE PRESIONE EL BOTON 'VER MAS'
@@ -380,7 +380,7 @@ function sugerencias(busqueda){
     console.log(busqueda);
   }
 };
-
+//FUNCION PARA AÑADIR CADA CARD AL GRID
 function desplegarResultados(url,tit,id,x){
   
   //AGREGO CONTENEDORES DINAMICAMENTE
@@ -392,7 +392,7 @@ function desplegarResultados(url,tit,id,x){
   resultados.appendChild(añadirResultados(url,tit,id,x));
 
 }
-
+//FUNCION PARA ARMAR CADA CARD DEL GRID
 function añadirResultados(url,titulo,id,x){
 
   let gridResultados = document.createElement('div');
@@ -462,6 +462,7 @@ function añadirResultados(url,titulo,id,x){
   //DEVUELVO EL ITEM DE GRID ARMADO
   return gridResultados;
 }
+//MAXIMIZADO DE CARD DE FAVORITOS
 function añadoDomMaxResults(b,url,titulo,iconFav,iconDownload,div1,div2){
 
   modal.innerHTML = '';
@@ -501,6 +502,7 @@ function añadoDomMaxResults(b,url,titulo,iconFav,iconDownload,div1,div2){
     modal.style.display = "none";
   })
 }
+//GUARDADO DE FAVORITOS
 function guardaFavoritosResults(url,tit,id,iconFav){
 
   let fav = iconFav;
@@ -581,7 +583,6 @@ function pedidoTrendings(){
   });
 }
 pedidoTrendings();
-
 
 //ELEMENTOS PARA VISUALIZAR GIF AL MAX
 let containerX = document.getElementsByClassName('containerX')[0];
@@ -719,7 +720,6 @@ function quitarFavorito(id){
       }
   });
 }
-
 function descargaGif(url,a,titulo){
   iconDownload[a].addEventListener("click", () =>{
     var x=new XMLHttpRequest();
@@ -841,8 +841,8 @@ function download(data, strFileName, strMimeType) {
   }
   return true;
 };
-//----------CAMBIO A DARK THEME--------------------->>>
 
+//----------CAMBIO A DARK THEME--------------------->>>
 //TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
 let theme = document.querySelector("#light-theme");
 //ELEMENTOS DEL NAV BAR

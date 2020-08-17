@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css" id="light-theme">
-    <title>CrearGifos</title>
 </head>
 <body>
     <nav class="nav" id="nav">
@@ -41,66 +41,6 @@
             </label>
         </div>
     </nav>
-    <main class="mainGifos">
-        <div class="rectangleContainer">
-            <div class="topCorner">
-                <div class="corner topLeft"></div>
-                <div class="corner topRight"></div>
-            </div>
-            <div class="infoContainer">
-                <h1 id="title" class="titleCreate">
-                    Aquí podrás<br>crear tus propios <span>GIFOS</span>
-                </h1>
-                <p id="instructions" class="instructions">
-                    ¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)
-                </p>
-                <video id="video">
-                    <source src="" type="video/mp4">
-                </video>
-                <div class="blueGifo" id="blueGifo">
-                    <div class="cardGifo" id="cardGifo">
-                        <div><img id="dwnGifo" class="downloadGifo icon" src="./images/icon-download.svg" alt=""></div>
-                        <div><a href="" id="hrefGifo" target="_blank"><img class="linkGifo icon" src="./images/icon-link.svg" alt=""></a></div>
-                    </div>
-                    <div class="statusCont">
-                        <img id="status" src="./images/loader.svg" alt="">
-                        <p class="subidaGifo" id="subidaGifo">Estamos subiendo tu GIFO</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bottomCorner">
-                <div class="corner bottomLeft"></div>
-                <div class="corner bottomRight"></div>
-            </div>
-        </div>
-        <div class="creationInfo">
-            <div class="creationStep">
-                <div class="step" id="step1">1</div>
-                <div class="step" id="step2">2</div>
-                <div class="step" id="step3">3</div>
-            </div>
-            <p class="btnRepeat" id="repeat">
-                REPETIR CAPTURA
-            </p>
-            <div class="timer" id="timer">
-                <label id="hours">00</label>
-                <label id="colon">:</label>
-                <label id="minutes">00</label>
-                <label id="colon">:</label>
-                <label id="seconds">00</label>
-            </div>
-        </div> 
-        <hr class="line">
-        <div class="creationBtn">
-            <button id="comenzar" class="creationBtnA">COMENZAR</button>
-            <button id="grabar" class="creationBtnA">GRABAR</button>
-        </div>
-        <div class="cam">
-            <img src="./images/camara.svg" alt="" id="camSVG">
-            <div id="camAnimation" class="camGradient"></div>
-        </div>
-        <img class="pelicula" src="./images/pelicula.svg" alt="">
-    </main>
     <footer>
         <div class="contRedes">
             <h4>Compartir en:</h4>
@@ -118,12 +58,10 @@
         </div>
         <h4>© GIFOS 2020 All Rights Reserved.</h4>
     </footer>
-<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
-<script src="./scripts/crearGif.js"></script>
+<script src="./scripts/misgifos.js"></script>
 <script>
     document.cookie = 'same-site-cookie=foo; SameSite=Lax'; 
     document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
 </script>
-
 </body>
 </html>

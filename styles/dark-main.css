@@ -68,9 +68,12 @@ object {
 }
 
 
-@media screen and (max-width:1064px){
+@media screen and (max-width:1024px){
     .nav-links{
         width: 55%;
+    }
+    .makegif {
+        display: none;
     }
 }
 @media screen and (max-width:840px){
@@ -88,9 +91,7 @@ object {
         height: 49px;
         width: 53px;
     }
-    .makegif {
-        display: none;
-    }
+
     .nav-links{
         position: absolute;
         right: 0px;
@@ -1095,7 +1096,7 @@ footer h4:last-child {
         margin-top: 45px;
         background-color: #222326;
         width: 100%;
-        height: 430px;
+        height: 540px;
     }
     .trendingGifos h1 {
         color :white;
@@ -1112,6 +1113,28 @@ footer h4:last-child {
         text-align: center;
         padding-bottom: 32px;
     }
+    .trendingGifos .arrowDiv {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        transform: translateY(160px);
+    }
+    .arrowDiv .arrow {
+        padding: 8px 10px 8px 10px;
+        border: 1px solid white;
+        background-color: #222326;
+        cursor: pointer;
+    }
+    .arrowDiv .arrow:hover {
+        border: none;
+        background-color: white;
+    }
+    #left {
+        margin-left: 54px;
+    }
+    #right {
+        margin-right: 54px;
+    }
     .holster {
         margin: auto;
         display: flex;
@@ -1123,7 +1146,7 @@ footer h4:last-child {
         }
     .containerX {
         display: flex;
-        overflow-x: auto;
+        overflow-x: hidden;
         flex: none;
         margin: auto;
         width: 100%;

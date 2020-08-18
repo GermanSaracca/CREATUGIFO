@@ -1,4 +1,14 @@
 const APIKEY = "IPDmvhDzm0liJgSooGZzCeivUyTZZ82L";
+// VARIABLES PARA MEDIAQUERYS
+let mediaMobile = window.matchMedia("(max-width: 768px)");
+let mediaIpad = window.matchMedia("(min-width: 768px) and (max-width : 1024px)");
+let mediaDesktop = window.matchMedia("(min-width: 1025px)");
+
+let mainCrearGifos = document.getElementById('mainGifos');
+if(mediaMobile.matches || mediaIpad.matches){
+
+  mainCrearGifos.innerHTML = "";
+}
 
 let video = document.getElementById('video');
 let blueGifo = document.getElementById('blueGifo');

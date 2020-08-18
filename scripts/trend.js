@@ -7,12 +7,92 @@ let tituGif = document.querySelectorAll('.tituloTrend');
 let iconFav = document.querySelectorAll('.fav');
 let iconDownload = document.querySelectorAll('.download');
 let arrowDiv = document.getElementById('arrowDiv');
+let trend1 = document.getElementById('griditem1');
+let trend2 = document.getElementById('griditem2');
+let trend3 = document.getElementById('griditem3');
+let trend4 = document.getElementById('griditem4');
+let trend5 = document.getElementById('griditem5');
+let left = document.getElementById('left');
+let right = document.getElementById('right');
+
+
+//CONTROL DE SLIDER CON FLECHAS LEFT & RIGHT
+let positionScroll = 1;
+
+left.addEventListener('click',()=>{
+
+  if(positionScroll == 1){
+
+    trend1.scrollIntoView(true);
+    positionScroll = 0;
+    console.log(positionScroll);
+
+  }else if(positionScroll == 2){
+
+    trend2.scrollIntoView(true);
+    trend3.scrollIntoView(true);
+    trend4.scrollIntoView(true);
+    positionScroll = 1;
+    console.log(positionScroll);
+  }
+})
+right.addEventListener('click',()=>{
+
+ if(positionScroll == 0){
+
+  trend2.scrollIntoView(true);
+  trend3.scrollIntoView(true);
+  trend4.scrollIntoView(true);
+  positionScroll = 1;
+  console.log(positionScroll);
+
+ }else if(positionScroll == 1){
+
+   trend5.scrollIntoView(true);
+   positionScroll = 2;
+   console.log(positionScroll);
+ } 
+})
+if(estadoModo != 1){
+
+  left.addEventListener('mouseover', ()=>{
+    left.setAttribute('src', './images/button-left-noc.svg')
+  })
+  left.addEventListener('mouseout', ()=>{
+    left.setAttribute('src', './images/button-left.svg')
+  })
+  right.addEventListener('mouseover', ()=>{
+    right.setAttribute('src', './images/button-right-noc.svg')
+  })
+  right.addEventListener('mouseout', ()=>{
+    right.setAttribute('src', './images/button-right.svg')
+  })
+}
+if(estadoModo == 1){
+
+  left.setAttribute('src', './images/button-left-noc.svg');
+  right.setAttribute('src', './images/button-right-noc.svg');
+
+  left.addEventListener('mouseover', ()=>{
+    left.setAttribute('src', './images/button-left-black.svg')
+  })
+  left.addEventListener('mouseout', ()=>{
+    left.setAttribute('src', './images/button-left-noc.svg')
+  })
+  right.addEventListener('mouseover', ()=>{
+    right.setAttribute('src', './images/button-right-black.svg')
+  })
+  right.addEventListener('mouseout', ()=>{
+    right.setAttribute('src', './images/button-right-noc.svg')
+  })
+}
 
 if(mediaMobile.matches || mediaIpad.matches){
   arrowDiv.style.display = 'none';
 }
+/*----------------------------------------*/
 
-//REQUEST DE 5 TRENDINGS PARA SECCION TRENDINGS---------------------------------------------------------------------
+//REQUEST DE 5 TRENDINGS PARA SECCION TRENDINGS------------------
 function pedidoTrendings(){
 
   async function buscaTrendings(){

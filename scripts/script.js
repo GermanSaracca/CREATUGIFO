@@ -366,7 +366,7 @@ sugerencia4.addEventListener('click',()=>{
 
 //FUNCION GENERAL PARA HACER LOS LLAMADOS A LA API
 async function getGif(url, value, api_key, number,offset){
-  let endPoint = `http://${url}?q=${value}&api_key=${api_key}&limit=${number}&offset=${offset}&lang=es`;
+  let endPoint = `https://${url}?q=${value}&api_key=${api_key}&limit=${number}&offset=${offset}&lang=es`;
   const resp = await fetch(endPoint);
   const data = await resp.json();
   return data;

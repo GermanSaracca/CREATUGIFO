@@ -129,7 +129,7 @@ function iniciarGrabacion(stream){
                 grabar.addEventListener('click',()=>{
 
                     if(grabar.textContent == "SUBIR GIFO"){
-                        /* var cors_api_url = 'https://cors-anywhere.herokuapp.com/';*/
+
 
                         blueGifo.style.display = 'unset';
                         grabar.style.display = 'none';

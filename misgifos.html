@@ -19,7 +19,7 @@
             <li>
                 <input type="checkbox" id="modoNoche" hidden>
                 <label for="modoNoche"  >
-                    <a class="menubtn">Nocturno</a>
+                    <a class="menubtn">Modo Nocturno</a>
                 </label>
             </li>
             <li>
@@ -41,6 +41,79 @@
             </label>
         </div>
     </nav>
+    <main>
+        <section class="misGifosResults">
+            <div class="tituMisGifs">
+                <img src="./images/icon-mis-gifos.svg" alt="">
+                <h1>Mis GIFOS</h1>
+            </div>
+            <div class="estadoGifs" id="estadoGifs">
+                <img id="noContent" src="./images/icon-mis-gifos-sin-contenido.svg" alt="" >
+                <h1>¡Anímate a crear tu primer GIFO!</h1>
+            </div>
+            <div id="allMyGifs">
+
+            </div>
+        </section>
+        <section class="trendingGifos">
+            <h1>Trending GIFOS</h1>
+            <h2>Mira los últimos<br> GIFOS de nuestra comunidad.</h2>
+            <div class="holster">
+                <div class="containerX " dir="ltr">
+                    <div class="grid-itemx">
+                        <div class="blue">
+                            <div class="cardIcons">
+                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 class="tituloTrend"></h4>
+                        </div>
+                    </div>
+                    <div class="grid-itemx">
+                        <div class="blue">
+                            <div class="cardIcons">
+                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 class="tituloTrend"></h4>
+                        </div>
+                    </div>
+                    <div class="grid-itemx">
+                        <div class="blue">
+                            <div class="cardIcons">
+                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 class="tituloTrend"></h4>
+                        </div>
+                    </div>
+                    <div class="grid-itemx">
+                        <div class="blue">
+                            <div class="cardIcons">
+                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 class="tituloTrend"></h4>
+                        </div>
+                    </div>
+                    <div class="grid-itemx">
+                        <div class="blue">
+                            <div class="cardIcons">
+                                <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
+                                <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
+                                <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
+                            </div>
+                            <h4 class="tituloTrend">Titulo GIFO</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     <footer>
         <div class="contRedes">
             <h4>Compartir en:</h4>
@@ -59,6 +132,7 @@
         <h4>© GIFOS 2020 All Rights Reserved.</h4>
     </footer>
 <script src="./scripts/misgifos.js"></script>
+<script src="./scripts/trend.js"></script>
 <script>
     document.cookie = 'same-site-cookie=foo; SameSite=Lax'; 
     document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';

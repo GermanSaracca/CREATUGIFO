@@ -638,6 +638,119 @@ object {
     border: none;
 }
 /*----------FIN FAVORITOS--------------------->*/
+/*------SECCION MIS GIFOS MODO MOBILE---------------->*/
+.misGifosResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 11px;
+}
+.misGifosResults .tituMisGifs {
+    display: flex;
+    flex-direction: column;
+}
+.misGifosResults .tituMisGifs h1 {
+    font-family: Montserrat ,sans-serif;
+    font-size: 25px;
+    color: #572EE5;
+    text-align: center;
+    line-height: 30px; 
+}
+.misGifosResults .estadoGifs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 46px;
+    text-align: center;
+    width: 80%;
+}
+.misGifosResults .estadoGifs img {
+    width: 76px;
+    height: 54px;
+}
+.misGifosResults .estadoGifs h1 {
+    color: #572EE5;
+    margin-top: 10px;
+}
+/*-----------------------*/
+.misGifos {
+    display: grid;
+    margin-top: 50px;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    grid-column-gap: 5vw;
+    grid-row-gap: 5vw;
+    grid-template-columns: auto auto;
+}
+
+.misGifos .grid-itemMG {
+    width: 41vw;
+    height: 32vw;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+.misGifos .grid-itemMG .blueMG {
+    width: 100%;
+    height: 100%;
+    background-color: #572EE5;
+    opacity: 0;
+}
+.misGifos .grid-itemMG .blueMG .cardIconsMG {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.misGifos .grid-itemMG .blueMG .cardIconsMG:hover {
+    background-color: #572EE5;
+    opacity: 1;
+}
+.misGifos .grid-itemMG .blueMG .cardIconsMG .iconMG {
+    height: 29px;
+    width: 29px;
+    background-color: white;
+    opacity: .5;
+    padding: 6px;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.misGifos .grid-itemMG .blueMG .cardIconsMG .iconMG:hover {
+    cursor: unset;
+    opacity: 1;
+}
+.misGifos .grid-itemMG .tituloMG {
+    font-size: 8px;
+    margin-left: 10px;
+    transform: translateY(-50px);
+    color: white;
+    width: 20vw;
+}
+.verMasMG{
+    margin-top: 78px;
+    text-align: center;
+    cursor: pointer;
+}
+.verMasMG .verMasMGA{
+    color: #572EE5;
+    background-color: white;
+    border: solid 1px #572EE5;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 13px;
+    width: 127px;
+    height: 50px;
+    padding: 18px 31.5px 16px 31.5px;
+}
+.verMasMG .verMasMGA:hover{
+    color: white;
+    background-color: #572EE5;
+    border: none;
+}
+
+/*----------FIN MIS GIFOS--------------------->*/
 
 /*-----FOOTER----------------------------*/
 footer {
@@ -880,6 +993,45 @@ footer h4:last-child {
         width: 20vw;
     }
     /*----------FIN FAVORITOS--------------------->*/
+
+    /*------SECCION MIS GIFOS MODO MOBILE---------------->*/
+    #noContent {
+        height: 150px;
+        width: 150px;
+    }
+    .misGifos {
+        display: grid;
+        margin-top: 50px;
+        margin-right: 2vw;
+        margin-left: 2vw;
+        grid-column-gap: 2vw;
+        grid-row-gap: 2vw;
+        grid-template-columns: auto auto auto;
+    }
+    .misGifos .grid-itemMG {
+        width: 30vw;
+        height: 24vw;
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: cover;
+        cursor: pointer;
+    }
+    .misGifos .grid-itemMG .blueMG .cardIconsMG {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        display: none;
+    }
+    .misGifos .grid-itemMG .tituloMG {
+        font-size: 12px;
+        margin-left: 10px;
+        transform: translateY(-50px);
+        color: white;
+        width: 20vw;
+    }
+    /*----------FIN MIS GIFOS--------------------->*/
 }
 
 @media screen and (min-width: 1024px){
@@ -937,7 +1089,8 @@ footer h4:last-child {
         margin-top: 45px;
         background-color: #F3F5F8;
         width: 100%;
-        height: 430px;
+        height: 540px;
+        border: solid 2px black;
     }
     .trendingGifos h1 {
         color :#572EE5 ;
@@ -954,6 +1107,28 @@ footer h4:last-child {
         text-align: center;
         padding-bottom: 32px;
     }
+    .trendingGifos .arrowDiv {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        transform: translateY(160px);
+    }
+    .arrowDiv .arrow {
+        padding: 8px 10px 8px 10px;
+        border: 1px solid #572EE5;
+        background-color: white;
+        cursor: pointer;
+    }
+    .arrowDiv .arrow:hover {
+        border: none;
+        background-color: #572EE5;
+    }
+    #left {
+        margin-left: 54px;
+    }
+    #right {
+        margin-right: 54px;
+    }
     .holster {
         margin: auto;
         display: flex;
@@ -962,7 +1137,8 @@ footer h4:last-child {
         flex-flow: column nowrap;
         font-family: monospace;
         width: 82.5%;
-        }
+
+    }
     .containerX {
         display: flex;
         overflow-x: auto;
@@ -972,6 +1148,7 @@ footer h4:last-child {
         height: 275px;
         flex-flow: row nowrap;
         scroll-snap-type: x mandatory;
+
     }
     
     .containerX .grid-itemx {
@@ -1390,6 +1567,66 @@ footer h4:last-child {
         80%  {background-image: linear-gradient(270deg, rgba(136,243,226,0.00) 15%, #50E3C2 90%);}
         90%  {background-image: linear-gradient(270deg, rgba(136,243,226,0.00) 5%, #50E3C2 70%);}
         100% {background-image: linear-gradient(270deg, rgba(136,243,226,0.00) 5%, #50E3C2 50%);}
+    }
+
+    /*----SECCION MIS GIFOS MODO DESKTOP----*/
+    .misGifos {
+        display: grid;
+        margin-top: 50px;
+        margin-right: 2vw;
+        margin-left: 2vw;
+        grid-column-gap: 2vw;
+        grid-row-gap: 2vw;
+        grid-template-columns: auto auto auto auto;
+    }
+    
+    .misGifos .grid-itemMG {
+        width: 22vw;
+        height: 17vw;
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-size: cover; 
+    }
+    .misGifos .grid-itemMG .blueMG {
+        width: 100%;
+        height: 100%;
+        background-color: #572EE5;
+        opacity: 0;
+    }
+    .misGifos .grid-itemMG .blueMG:hover{
+        opacity: .9;
+    }
+    .misGifos .grid-itemMG .blueMG .cardIconsMG {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    .misGifos .grid-itemMG .blueMG .cardIconsMG:hover {
+        background-color: #572EE5;
+        opacity: 1;
+    }
+    .misGifos .grid-itemMG .blueMG .cardIconsMG .iconMG {
+        height: 29px;
+        width: 29px;
+        background-color: white;
+        opacity: .5;
+        padding: 6px;
+        border-radius: 6px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .misGifos .grid-itemMG .blueMG .cardIconsMG .iconMG:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+    .misGifos .grid-itemMG .tituloMG {
+        font-size: 12px;
+        margin-left: 10px;
+        transform: translateY(-50px);
+        color: white;
+        width: 20vw;
     }
 }   
 

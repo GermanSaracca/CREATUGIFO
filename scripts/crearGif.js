@@ -19,8 +19,12 @@ let hoursLabel = document.getElementById("hours");
 let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
 let timer = document.getElementById('timer');
+let camara = document.getElementById('camSVG');
+let pelicula = document.getElementById('peliSVG');
 let camAnimation = document.getElementById('camAnimation');
 
+//ESTADO DE MODO DARK O LIGHT GUARDADO EN SESSION STORAGE
+let estadoModo = sessionStorage.getItem("themeStatus");
 
 class Creacion{
     constructor(url,id){
@@ -117,7 +121,6 @@ function iniciarGrabacion(stream){
                     if(grabar.textContent == "SUBIR GIFO"){
                         /* var cors_api_url = 'https://cors-anywhere.herokuapp.com/';*/
 
-
                         blueGifo.style.display = 'unset';
                         grabar.style.display = 'none';
 
@@ -143,6 +146,7 @@ function iniciarGrabacion(stream){
 
                                 let infoGify = res.json();
                                 return infoGify;
+
                             })
                             .then(res2 =>{
 
@@ -185,8 +189,15 @@ function guardarCreacionLocalStorage(data){
 function paso1(){
     titleCreate.innerHTML = '¿Nos das acceso<br> a tu cámara?';
     instructions.innerHTML = 'El acceso a tu camara será válido sólo<br> por el tiempo en el que estés creando el GIFO.';
-    step1.style.color = 'white';
-    step1.style.backgroundColor = '#572EE5';
+
+    if (estadoModo == 1){
+      step1.style.color = '#37383C';
+      step1.style.backgroundColor = 'white';
+    }else{
+      step1.style.color = 'white';
+      step1.style.backgroundColor = '#572EE5';
+    }
+
     comenzar.style.display= "none";
 }
 function paso2(){
@@ -194,21 +205,43 @@ function paso2(){
     grabar.textContent = "GRABAR";
     titleCreate.innerHTML = '';
     instructions.innerHTML = '';
-    step1.style.color = '#572EE5';
-    step1.style.backgroundColor = 'white';
-    step2.style.color = 'white';
-    step2.style.backgroundColor = '#572EE5';
+
+    if (estadoModo == 1){
+      step1.style.color = 'white';
+      step1.style.backgroundColor = '#37383C';
+      step2.style.color = '#37383C';
+      step2.style.backgroundColor = 'white';
+    }else{
+      step1.style.color = '#572EE5';
+      step1.style.backgroundColor = 'white';
+      step2.style.color = 'white';
+      step2.style.backgroundColor = '#572EE5';
+    }
+
 }
 function paso3(urlGifo, idGifo){
-    step1.style.color = '#572EE5';
-    step1.style.backgroundColor = 'white';
-    step2.style.color = '#572EE5';
-    step2.style.backgroundColor = 'white';
-    step3.style.color = 'white';
-    step3.style.backgroundColor = '#572EE5';
+
+    if (estadoModo == 1){
+      step1.style.color = 'white';
+      step1.style.backgroundColor = '#37383C';
+      step2.style.color = 'white';
+      step2.style.backgroundColor = '#37383C';
+      step3.style.color = '#37383C';
+      step3.style.backgroundColor = 'white';
+    }else{
+      step1.style.color = '#572EE5';
+      step1.style.backgroundColor = 'white';
+      step2.style.color = '#572EE5';
+      step2.style.backgroundColor = 'white';
+      step3.style.color = 'white';
+      step3.style.backgroundColor = '#572EE5';
+
+    }
+
     cardGifo.style.opacity = '1';
     statusGifo.setAttribute('src', "./images/check.svg");
     subidaGifo.textContent = 'GIFO subido con éxito';
+    repeat.style.display = "none";
     //FUNCIONALIDAD DE LINKEO PARA VER GIFO EN PAGINA DE GIPHY
     hrefGifo.setAttribute('href', urlGifo);
     //FUNCIONALIDAD DE DESCARGA
@@ -249,120 +282,213 @@ repeat.addEventListener('click',()=>{
     location.reload();
 })
 
-
-
-  function download(data, strFileName, strMimeType) {
-    var self = window, // this script is only for browsers anyway...
-      defaultMime = "application/octet-stream", // this default mime also triggers iframe downloads
-      mimeType = strMimeType || defaultMime,
-      payload = data,
-      url = !strFileName && !strMimeType && payload,
-      anchor = document.createElement("a"),
-      toString = function(a){return String(a);},
-      myBlob = (self.Blob || self.MozBlob || self.WebKitBlob || toString),
-      fileName = strFileName || "download",
-      blob,
-      reader;
-      myBlob= myBlob.call ? myBlob.bind(self) : Blob ;
-    if(String(this)==="true"){ //reverse arguments, allowing download.bind(true, "text/xml", "export.xml") to act as a callback
-      payload=[payload, mimeType];
-      mimeType=payload[0];
-      payload=payload[1];
-    }
-    if(url && url.length< 2048){ // if no filename and no mime, assume a url was passed as the only argument
-      fileName = url.split("/").pop().split("?")[0];
-      anchor.href = url; // assign href prop to temp anchor
-        if(anchor.href.indexOf(url) !== -1){ // if the browser determines that it's a potentially valid url path:
-            var ajax=new XMLHttpRequest();
-            ajax.open( "GET", url, true);
-            ajax.responseType = 'blob';
-            ajax.onload= function(e){ 
-          download(e.target.response, fileName, defaultMime);
-        };
-            setTimeout(function(){ ajax.send();}, 0); // allows setting custom ajax headers using the return:
-          return ajax;
-      } // end if valid url?
-    } // end if url?
-    //go ahead and download dataURLs right away
-    if(/^data\:[\w+\-]+\/[\w+\-]+[,;]/.test(payload)){
-      if(payload.length > (1024*1024*1.999) && myBlob !== toString ){
-        payload=dataUrlToBlob(payload);
-        mimeType=payload.type || defaultMime;
-      }else{			
-        return navigator.msSaveBlob ?  // IE10 can't do a[download], only Blobs:
-          navigator.msSaveBlob(dataUrlToBlob(payload), fileName) :
-          saver(payload) ; // everyone else can save dataURLs un-processed
-      }
-    }//end if dataURL passed?
-    blob = payload instanceof myBlob ?
-      payload :
-      new myBlob([payload], {type: mimeType}) ;
-    function dataUrlToBlob(strUrl) {
-      var parts= strUrl.split(/[:;,]/),
-      type= parts[1],
-      decoder= parts[2] == "base64" ? atob : decodeURIComponent,
-      binData= decoder( parts.pop() ),
-      mx= binData.length,
-      i= 0,
-      uiArr= new Uint8Array(mx);
-      for(i;i<mx;++i) uiArr[i]= binData.charCodeAt(i);
-      return new myBlob([uiArr], {type: type});
-     }
-    function saver(url, winMode){
-      if ('download' in anchor) { //html5 A[download]
-        anchor.href = url;
-        anchor.setAttribute("download", fileName);
-        anchor.className = "download-js-link";
-        anchor.innerHTML = "downloading...";
-        anchor.style.display = "none";
-        document.body.appendChild(anchor);
-        setTimeout(function() {
-          anchor.click();
-          document.body.removeChild(anchor);
-          if(winMode===true){setTimeout(function(){ self.URL.revokeObjectURL(anchor.href);}, 250 );}
-        }, 66);
-        return true;
-      }
-      // handle non-a[download] safari as best we can:
-      if(/(Version)\/(\d+)\.(\d+)(?:\.(\d+))?.*Safari\//.test(navigator.userAgent)) {
-        url=url.replace(/^data:([\w\/\-\+]+)/, defaultMime);
-        if(!window.open(url)){ // popup blocked, offer direct download:
-          if(confirm("Displaying New Document\n\nUse Save As... to download, then click back to return to this page.")){ location.href=url; }
-        }
-        return true;
-      }
-      //do iframe dataURL download (old ch+FF):
-      var f = document.createElement("iframe");
-      document.body.appendChild(f);
-      if(!winMode){ // force a mime that will download:
-        url="data:"+url.replace(/^data:([\w\/\-\+]+)/, defaultMime);
-      }
-      f.src=url;
-      setTimeout(function(){ document.body.removeChild(f); }, 333);
-    }//end saver
-    if (navigator.msSaveBlob) { // IE10+ : (has Blob, but not a[download] or URL)
-      return navigator.msSaveBlob(blob, fileName);
-    }
-    if(self.URL){ // simple fast and modern way using Blob and URL:
-      saver(self.URL.createObjectURL(blob), true);
-    }else{
-      // handle non-Blob()+non-URL browsers:
-      if(typeof blob === "string" || blob.constructor===toString ){
-        try{
-          return saver( "data:" +  mimeType   + ";base64,"  +  self.btoa(blob)  );
-        }catch(y){
-          return saver( "data:" +  mimeType   + "," + encodeURIComponent(blob)  );
-        }
-      }
-      // Blob but not URL support:
-      reader=new FileReader();
-      reader.onload=function(e){
-        saver(this.result);
+function download(data, strFileName, strMimeType) {
+  var self = window, // this script is only for browsers anyway...
+    defaultMime = "application/octet-stream", // this default mime also triggers iframe downloads
+    mimeType = strMimeType || defaultMime,
+    payload = data,
+    url = !strFileName && !strMimeType && payload,
+    anchor = document.createElement("a"),
+    toString = function(a){return String(a);},
+    myBlob = (self.Blob || self.MozBlob || self.WebKitBlob || toString),
+    fileName = strFileName || "download",
+    blob,
+    reader;
+    myBlob= myBlob.call ? myBlob.bind(self) : Blob ;
+  if(String(this)==="true"){ //reverse arguments, allowing download.bind(true, "text/xml", "export.xml") to act as a callback
+    payload=[payload, mimeType];
+    mimeType=payload[0];
+    payload=payload[1];
+  }
+  if(url && url.length< 2048){ // if no filename and no mime, assume a url was passed as the only argument
+    fileName = url.split("/").pop().split("?")[0];
+    anchor.href = url; // assign href prop to temp anchor
+      if(anchor.href.indexOf(url) !== -1){ // if the browser determines that it's a potentially valid url path:
+          var ajax=new XMLHttpRequest();
+          ajax.open( "GET", url, true);
+          ajax.responseType = 'blob';
+          ajax.onload= function(e){ 
+        download(e.target.response, fileName, defaultMime);
       };
-      reader.readAsDataURL(blob);
+          setTimeout(function(){ ajax.send();}, 0); // allows setting custom ajax headers using the return:
+        return ajax;
+    } // end if valid url?
+  } // end if url?
+  //go ahead and download dataURLs right away
+  if(/^data\:[\w+\-]+\/[\w+\-]+[,;]/.test(payload)){
+    if(payload.length > (1024*1024*1.999) && myBlob !== toString ){
+      payload=dataUrlToBlob(payload);
+      mimeType=payload.type || defaultMime;
+    }else{			
+      return navigator.msSaveBlob ?  // IE10 can't do a[download], only Blobs:
+        navigator.msSaveBlob(dataUrlToBlob(payload), fileName) :
+        saver(payload) ; // everyone else can save dataURLs un-processed
     }
-    return true;
-  };
-/*
-var track = stream.getTracks()[0];  
-track.stop();*/
+  }//end if dataURL passed?
+  blob = payload instanceof myBlob ?
+    payload :
+    new myBlob([payload], {type: mimeType}) ;
+  function dataUrlToBlob(strUrl) {
+    var parts= strUrl.split(/[:;,]/),
+    type= parts[1],
+    decoder= parts[2] == "base64" ? atob : decodeURIComponent,
+    binData= decoder( parts.pop() ),
+    mx= binData.length,
+    i= 0,
+    uiArr= new Uint8Array(mx);
+    for(i;i<mx;++i) uiArr[i]= binData.charCodeAt(i);
+    return new myBlob([uiArr], {type: type});
+    }
+  function saver(url, winMode){
+    if ('download' in anchor) { //html5 A[download]
+      anchor.href = url;
+      anchor.setAttribute("download", fileName);
+      anchor.className = "download-js-link";
+      anchor.innerHTML = "downloading...";
+      anchor.style.display = "none";
+      document.body.appendChild(anchor);
+      setTimeout(function() {
+        anchor.click();
+        document.body.removeChild(anchor);
+        if(winMode===true){setTimeout(function(){ self.URL.revokeObjectURL(anchor.href);}, 250 );}
+      }, 66);
+      return true;
+    }
+    // handle non-a[download] safari as best we can:
+    if(/(Version)\/(\d+)\.(\d+)(?:\.(\d+))?.*Safari\//.test(navigator.userAgent)) {
+      url=url.replace(/^data:([\w\/\-\+]+)/, defaultMime);
+      if(!window.open(url)){ // popup blocked, offer direct download:
+        if(confirm("Displaying New Document\n\nUse Save As... to download, then click back to return to this page.")){ location.href=url; }
+      }
+      return true;
+    }
+    //do iframe dataURL download (old ch+FF):
+    var f = document.createElement("iframe");
+    document.body.appendChild(f);
+    if(!winMode){ // force a mime that will download:
+      url="data:"+url.replace(/^data:([\w\/\-\+]+)/, defaultMime);
+    }
+    f.src=url;
+    setTimeout(function(){ document.body.removeChild(f); }, 333);
+  }//end saver
+  if (navigator.msSaveBlob) { // IE10+ : (has Blob, but not a[download] or URL)
+    return navigator.msSaveBlob(blob, fileName);
+  }
+  if(self.URL){ // simple fast and modern way using Blob and URL:
+    saver(self.URL.createObjectURL(blob), true);
+  }else{
+    // handle non-Blob()+non-URL browsers:
+    if(typeof blob === "string" || blob.constructor===toString ){
+      try{
+        return saver( "data:" +  mimeType   + ";base64,"  +  self.btoa(blob)  );
+      }catch(y){
+        return saver( "data:" +  mimeType   + "," + encodeURIComponent(blob)  );
+      }
+    }
+    // Blob but not URL support:
+    reader=new FileReader();
+    reader.onload=function(e){
+      saver(this.result);
+    };
+    reader.readAsDataURL(blob);
+  }
+  return true;
+};
+
+//  CAMBIO DE ICONO - MENU HAMBURGUESA-----------------------------------
+let nav = document.querySelector('.nav-links');
+let icon = document.getElementById("check");
+let img = document.getElementById('burgerIcon');
+
+if(estadoModo == 1){
+
+  img.src = "./images/burger-noc.svg";
+}
+
+icon.addEventListener("click",()=>{
+
+  nav.classList.toggle('nav-active');
+
+    if (check.checked == true && estadoModo != 1){
+      img.src = "./images/close.svg";
+    }else if(check.checked == false && estadoModo != 1) {
+      img.src = "./images/burger.svg";
+    }else if(check.checked !== true && estadoModo == 1) {
+      img.src = "./images/burger-noc.svg";
+    }else if(check.checked == true && estadoModo == 1){
+      img.src = "./images/button-close-noc.svg";
+    } 
+})
+
+//----------------------------------------------------------XXX
+
+//----------CAMBIO A DARK THEME--------------------->>>
+//TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
+let theme = document.querySelector("#light-theme");
+//ELEMENTOS DEL NAV BAR
+let crearGif = document.getElementById('gifCreatorBtn');
+let modoNoche = document.getElementById('modoNoche');
+let logoNav = document.getElementById('logoNav');
+let btnMenu = document.querySelectorAll('.menubtn');
+let navlink = document.getElementsByClassName('nav-links');
+let burger = document.getElementById('burgerIcon');
+
+
+if(estadoModo == 1){
+
+  theme.href = "styles/dark-main.css";
+  modoDark();
+
+}else{
+
+  theme.href = "styles/main.css";
+  modoLight();
+}
+
+let themeStatus;
+
+modoNoche.addEventListener('click',()=>{
+
+  if(theme.getAttribute("href") == "styles/main.css"){
+    theme.href = "styles/dark-main.css";
+    themeStatus = 1;
+    sessionStorage.setItem("themeStatus", themeStatus);
+    modoDark();
+
+  }else{
+
+    theme.href = "styles/main.css";
+    themeStatus = 0;
+    sessionStorage.setItem("themeStatus", themeStatus);
+    modoLight();
+  }
+  location.reload();
+})
+
+function modoDark(){
+
+  logoNav.setAttribute('src','./images/logo-desktop-modo-noc.svg');
+  crearGif.setAttribute('src','./images/button-crear-gifo-noc.svg');
+  btnMenu[0].textContent = 'Modo Diurno';
+  camara.setAttribute('src', "./images/camara-modo-noc.svg");
+  pelicula.setAttribute('src','./images/pelicula-modo-noc.svg');
+
+}
+function modoLight(){
+
+  logoNav.setAttribute('src','./images/logo-desktop.svg');
+  crearGif.setAttribute('src','./images/button-crear-gifo.svg');
+  btnMenu[0].textContent = 'Modo Nocturno';
+  camara.setAttribute('src', "./images/camara.svg");
+  pelicula.setAttribute('src','./images/pelicula.svg');
+
+}
+//--------------FIN CAMBIO A DARK THEME----------------------XXX
+
+//MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
+let makeGif = document.getElementById('makegif');
+let divgifCreatorBtn = document.getElementById('gif_creator');
+
+divgifCreatorBtn.style.backgroundColor = '#9CAFC3';
+divgifCreatorBtn.style.border = 'none';
+crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');

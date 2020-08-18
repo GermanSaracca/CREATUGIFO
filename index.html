@@ -19,7 +19,7 @@
             <li>
                 <input type="checkbox" id="modoNoche" hidden>
                 <label for="modoNoche"  >
-                    <a class="menubtn">Nocturno</a>
+                    <a class="menubtn">Modo Nocturno</a>
                 </label>
             </li>
             <li>
@@ -166,9 +166,13 @@
         <section class="trendingGifos">
             <h1>Trending GIFOS</h1>
             <h2>Mira los últimos<br> GIFOS de nuestra comunidad.</h2>
+            <div class="arrowDiv" id="arrowDiv">
+                <img id="left" class="arrow" src="./images/button-left.svg" alt="">
+                <img id="right" class="arrow"  src="./images/button-right.svg" alt="">
+            </div>
             <div class="holster">
                 <div class="containerX " dir="ltr">
-                    <div class="grid-itemx">
+                    <div class="grid-itemx" id="griditem1">
                         <div class="blue">
                             <div class="cardIcons">
                                 <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
@@ -178,7 +182,7 @@
                             <h4 class="tituloTrend"></h4>
                         </div>
                     </div>
-                    <div class="grid-itemx">
+                    <div class="grid-itemx" id="griditem2">
                         <div class="blue">
                             <div class="cardIcons">
                                 <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
@@ -188,7 +192,7 @@
                             <h4 class="tituloTrend"></h4>
                         </div>
                     </div>
-                    <div class="grid-itemx">
+                    <div class="grid-itemx" id="griditem3">
                         <div class="blue">
                             <div class="cardIcons">
                                 <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
@@ -198,7 +202,7 @@
                             <h4 class="tituloTrend"></h4>
                         </div>
                     </div>
-                    <div class="grid-itemx">
+                    <div class="grid-itemx" id="griditem4">
                         <div class="blue">
                             <div class="cardIcons">
                                 <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
@@ -208,14 +212,14 @@
                             <h4 class="tituloTrend"></h4>
                         </div>
                     </div>
-                    <div class="grid-itemx">
+                    <div class="grid-itemx" id="griditem5">
                         <div class="blue">
                             <div class="cardIcons">
                                 <div class="div1"><img class="fav icon"  src="./images/icon-fav-hover.svg" alt=""></div>
                                 <div class="div2"><img class="download icon"  src="./images/icon-download.svg" alt=""></div>
                                 <div><img class="max icon"  src="./images/icon-max.svg" alt=""></div>
                             </div>
-                            <h4 class="tituloTrend">Titulo GIFO</h4>
+                            <h4 class="tituloTrend"></h4>
                         </div>
                     </div>
                 </div>
@@ -240,6 +244,7 @@
         <h4>© GIFOS 2020 All Rights Reserved.</h4>
     </footer>
 <script src="./scripts/script.js"></script>
+<script src="./scripts/trend.js"></script>
 <script>
     document.cookie = 'same-site-cookie=foo; SameSite=Lax'; 
     document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';

@@ -12,6 +12,88 @@ let btnMenu = document.querySelectorAll('.menubtn');
 let navlink = document.getElementsByClassName('nav-links');
 let burger = document.getElementById('burgerIcon');
 
+//  CAMBIO DE ICONO - MENU HAMBURGUESA-----------------------------------
+let nav = document.querySelector('.nav-links');
+let icon = document.getElementById("check");
+let img = document.getElementById('burgerIcon');
+
+//MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
+let makeGif = document.getElementById('makegif');
+let divgifCreatorBtn = document.getElementById('gif_creator');
+
+//ESTADO DE MODO DARK O LIGHT GUARDADO EN LOCAL STORAGE
+let estadoModo = localStorage.getItem("themeStatus");
+
+if(estadoModo == 1){
+
+  img.src = "./images/burger-noc.svg";
+}
+
+icon.addEventListener("click",()=>{
+
+  nav.classList.toggle('nav-active');
+
+    if (check.checked == true && estadoModo != 1){
+      img.src = "./images/close.svg";
+    }else if(check.checked == false && estadoModo != 1) {
+      img.src = "./images/burger.svg";
+    }else if(check.checked !== true && estadoModo == 1) {
+      img.src = "./images/burger-noc.svg";
+    }else if(check.checked == true && estadoModo == 1){
+      img.src = "./images/button-close-noc.svg";
+    } 
+})
+//----------------------------------------------------------XXX
+
+//TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
+let theme = document.querySelector("#light-theme");
+
+if(estadoModo == 1){
+
+  theme.href = "styles/dark-main.css";
+  modoDark();
+
+}else{
+
+  theme.href = "styles/main.css";
+  modoLight();
+}
+
+let themeStatus;
+modoNoche.addEventListener('click',()=>{
+
+  if(theme.getAttribute("href") == "styles/main.css"){
+    theme.href = "styles/dark-main.css";
+    themeStatus = 1;
+    localStorage.setItem("themeStatus", themeStatus);
+    modoDark();
+
+  }else{
+
+    theme.href = "styles/main.css";
+    themeStatus = 0;
+    localStorage.setItem("themeStatus", themeStatus);
+    modoLight();
+  }
+  location.reload();
+})
+
+function modoDark(){
+
+  logoNav.setAttribute('src','./images/logo-desktop-modo-noc.svg');
+  crearGif.setAttribute('src','./images/button-crear-gifo-noc.svg');
+  btnMenu[0].textContent = 'Modo Diurno';
+
+}
+function modoLight(){
+
+  logoNav.setAttribute('src','./images/logo-desktop.svg');
+  crearGif.setAttribute('src','./images/button-crear-gifo.svg');
+  btnMenu[0].textContent = 'Modo Nocturno';
+
+}
+//--------------FIN CAMBIO A DARK THEME----------------------XXX
+
 let arrayCreaciones = [];
 //RECARGO INFORMACION EN LOCAL STORAGE Y LA PASO AL arrayCREACIONES.
 function recargarCreaciones(){
@@ -208,89 +290,7 @@ function añadoDomMaxMG(b,url,iconDelete,iconDownload,div1,div2){
   })
 }
 
-//  CAMBIO DE ICONO - MENU HAMBURGUESA-----------------------------------
-let nav = document.querySelector('.nav-links');
-let icon = document.getElementById("check");
-let img = document.getElementById('burgerIcon');
 
-//ESTADO DE MODO DARK O LIGHT GUARDADO EN SESSION STORAGO
-let estadoModo = sessionStorage.getItem("themeStatus");
-
-if(estadoModo == 1){
-
-  img.src = "./images/burger-noc.svg";
-}
-
-icon.addEventListener("click",()=>{
-
-  nav.classList.toggle('nav-active');
-
-    if (check.checked == true && estadoModo != 1){
-      img.src = "./images/close.svg";
-    }else if(check.checked == false && estadoModo != 1) {
-      img.src = "./images/burger.svg";
-    }else if(check.checked !== true && estadoModo == 1) {
-      img.src = "./images/burger-noc.svg";
-    }else if(check.checked == true && estadoModo == 1){
-      img.src = "./images/button-close-noc.svg";
-    } 
-})
-
-//----------------------------------------------------------XXX
-
-//TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
-let theme = document.querySelector("#light-theme");
-
-if(estadoModo == 1){
-
-  theme.href = "styles/dark-main.css";
-  modoDark();
-
-}else{
-
-  theme.href = "styles/main.css";
-  modoLight();
-}
-
-let themeStatus;
-
-modoNoche.addEventListener('click',()=>{
-
-  if(theme.getAttribute("href") == "styles/main.css"){
-    theme.href = "styles/dark-main.css";
-    themeStatus = 1;
-    sessionStorage.setItem("themeStatus", themeStatus);
-    modoDark();
-
-  }else{
-
-    theme.href = "styles/main.css";
-    themeStatus = 0;
-    sessionStorage.setItem("themeStatus", themeStatus);
-    modoLight();
-  }
-  location.reload();
-})
-
-function modoDark(){
-
-  logoNav.setAttribute('src','./images/logo-desktop-modo-noc.svg');
-  crearGif.setAttribute('src','./images/button-crear-gifo-noc.svg');
-  btnMenu[0].textContent = 'Modo Diurno';
-
-}
-function modoLight(){
-
-  logoNav.setAttribute('src','./images/logo-desktop.svg');
-  crearGif.setAttribute('src','./images/button-crear-gifo.svg');
-  btnMenu[0].textContent = 'Modo Nocturno';
-
-}
-//--------------FIN CAMBIO A DARK THEME----------------------XXX
-
-//MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
-let makeGif = document.getElementById('makegif');
-let divgifCreatorBtn = document.getElementById('gif_creator');
 
 makeGif.addEventListener('mouseover',()=>{
   if(estadoModo != 1){

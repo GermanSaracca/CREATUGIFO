@@ -6,7 +6,7 @@ let mediaDesktop = window.matchMedia("(min-width: 1025px)");
 
 let mainCrearGifos = document.getElementById('mainGifos');
 if(mediaMobile.matches || mediaIpad.matches){
-
+  
   mainCrearGifos.innerHTML = "";
 }
 
@@ -33,8 +33,97 @@ let camara = document.getElementById('camSVG');
 let pelicula = document.getElementById('peliSVG');
 let camAnimation = document.getElementById('camAnimation');
 
-//ESTADO DE MODO DARK O LIGHT GUARDADO EN SESSION STORAGE
-let estadoModo = sessionStorage.getItem("themeStatus");
+//ESTADO DE MODO DARK O LIGHT GUARDADO EN LOCAL STORAGE
+let estadoModo = localStorage.getItem("themeStatus");
+
+//----------CAMBIO A DARK THEME--------------------->>>
+//TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
+let theme = document.querySelector("#light-theme");
+
+//ELEMENTOS DEL NAV BAR
+let crearGif = document.getElementById('gifCreatorBtn');
+let modoNoche = document.getElementById('modoNoche');
+let logoNav = document.getElementById('logoNav');
+let btnMenu = document.querySelectorAll('.menubtn');
+let navlink = document.getElementsByClassName('nav-links');
+let burger = document.getElementById('burgerIcon');
+//  CAMBIO DE ICONO - MENU HAMBURGUESA-----------------------------------
+let nav = document.querySelector('.nav-links');
+let icon = document.getElementById("check");
+let img = document.getElementById('burgerIcon');
+
+if(estadoModo == 1){
+
+  img.src = "./images/burger-noc.svg";
+}
+
+icon.addEventListener("click",()=>{
+
+  nav.classList.toggle('nav-active');
+
+    if (check.checked == true && estadoModo != 1){
+      img.src = "./images/close.svg";
+    }else if(check.checked == false && estadoModo != 1) {
+      img.src = "./images/burger.svg";
+    }else if(check.checked !== true && estadoModo == 1) {
+      img.src = "./images/burger-noc.svg";
+    }else if(check.checked == true && estadoModo == 1){
+      img.src = "./images/button-close-noc.svg";
+    } 
+})
+
+//----------------------------------------------------------XXX
+
+if(estadoModo == 1){
+
+  theme.href = "styles/dark-main.css";
+  modoDark();
+
+}else{
+
+  theme.href = "styles/main.css";
+  modoLight();
+}
+
+let themeStatus;
+
+modoNoche.addEventListener('click',()=>{
+
+  if(theme.getAttribute("href") == "styles/main.css"){
+    theme.href = "styles/dark-main.css";
+    themeStatus = 1;
+    localStorage.setItem("themeStatus", themeStatus);
+    modoDark();
+
+  }else{
+
+    theme.href = "styles/main.css";
+    themeStatus = 0;
+    localStorage.setItem("themeStatus", themeStatus);
+    modoLight();
+  }
+  location.reload();
+})
+
+function modoDark(){
+
+  logoNav.setAttribute('src','./images/logo-desktop-modo-noc.svg');
+  crearGif.setAttribute('src','./images/button-crear-gifo-noc.svg');
+  btnMenu[0].textContent = 'Modo Diurno';
+  camara.setAttribute('src', "./images/camara-modo-noc.svg");
+  pelicula.setAttribute('src','./images/pelicula-modo-noc.svg');
+
+}
+function modoLight(){
+
+  logoNav.setAttribute('src','./images/logo-desktop.svg');
+  crearGif.setAttribute('src','./images/button-crear-gifo.svg');
+  btnMenu[0].textContent = 'Modo Nocturno';
+  camara.setAttribute('src', "./images/camara.svg");
+  pelicula.setAttribute('src','./images/pelicula.svg');
+
+}
+//--------------FIN CAMBIO A DARK THEME----------------------XXX
 
 class Creacion{
     constructor(url,id){
@@ -129,7 +218,10 @@ function iniciarGrabacion(stream){
                 grabar.addEventListener('click',()=>{
 
                     if(grabar.textContent == "SUBIR GIFO"){
-
+                        
+                        //funcion para apagar la camara al dejar de usarla
+                        var track = stream.getTracks()[0];
+                        track.stop();
 
                         blueGifo.style.display = 'unset';
                         grabar.style.display = 'none';
@@ -405,95 +497,9 @@ function download(data, strFileName, strMimeType) {
   return true;
 };
 
-//  CAMBIO DE ICONO - MENU HAMBURGUESA-----------------------------------
-let nav = document.querySelector('.nav-links');
-let icon = document.getElementById("check");
-let img = document.getElementById('burgerIcon');
-
-if(estadoModo == 1){
-
-  img.src = "./images/burger-noc.svg";
-}
-
-icon.addEventListener("click",()=>{
-
-  nav.classList.toggle('nav-active');
-
-    if (check.checked == true && estadoModo != 1){
-      img.src = "./images/close.svg";
-    }else if(check.checked == false && estadoModo != 1) {
-      img.src = "./images/burger.svg";
-    }else if(check.checked !== true && estadoModo == 1) {
-      img.src = "./images/burger-noc.svg";
-    }else if(check.checked == true && estadoModo == 1){
-      img.src = "./images/button-close-noc.svg";
-    } 
-})
-
-//----------------------------------------------------------XXX
-
-//----------CAMBIO A DARK THEME--------------------->>>
-//TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
-let theme = document.querySelector("#light-theme");
-//ELEMENTOS DEL NAV BAR
-let crearGif = document.getElementById('gifCreatorBtn');
-let modoNoche = document.getElementById('modoNoche');
-let logoNav = document.getElementById('logoNav');
-let btnMenu = document.querySelectorAll('.menubtn');
-let navlink = document.getElementsByClassName('nav-links');
-let burger = document.getElementById('burgerIcon');
 
 
-if(estadoModo == 1){
 
-  theme.href = "styles/dark-main.css";
-  modoDark();
-
-}else{
-
-  theme.href = "styles/main.css";
-  modoLight();
-}
-
-let themeStatus;
-
-modoNoche.addEventListener('click',()=>{
-
-  if(theme.getAttribute("href") == "styles/main.css"){
-    theme.href = "styles/dark-main.css";
-    themeStatus = 1;
-    sessionStorage.setItem("themeStatus", themeStatus);
-    modoDark();
-
-  }else{
-
-    theme.href = "styles/main.css";
-    themeStatus = 0;
-    sessionStorage.setItem("themeStatus", themeStatus);
-    modoLight();
-  }
-  location.reload();
-})
-
-function modoDark(){
-
-  logoNav.setAttribute('src','./images/logo-desktop-modo-noc.svg');
-  crearGif.setAttribute('src','./images/button-crear-gifo-noc.svg');
-  btnMenu[0].textContent = 'Modo Diurno';
-  camara.setAttribute('src', "./images/camara-modo-noc.svg");
-  pelicula.setAttribute('src','./images/pelicula-modo-noc.svg');
-
-}
-function modoLight(){
-
-  logoNav.setAttribute('src','./images/logo-desktop.svg');
-  crearGif.setAttribute('src','./images/button-crear-gifo.svg');
-  btnMenu[0].textContent = 'Modo Nocturno';
-  camara.setAttribute('src', "./images/camara.svg");
-  pelicula.setAttribute('src','./images/pelicula.svg');
-
-}
-//--------------FIN CAMBIO A DARK THEME----------------------XXX
 
 //MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
 let makeGif = document.getElementById('makegif');

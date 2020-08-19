@@ -15,6 +15,18 @@ let trend5 = document.getElementById('griditem5');
 let left = document.getElementById('left');
 let right = document.getElementById('right');
 
+//ELEMENTOS PARA VISUALIZAR GIF AL MAX
+let containerX = document.getElementsByClassName('containerX')[0];
+let iconMax = document.querySelectorAll('.max');
+let modal = document.createElement('div');
+let closeMax = document.createElement('a');
+let imgClose = document.createElement('img');
+let containMax = document.createElement('div');
+let gifMax= document.createElement('img');
+let infoDiv = document.createElement('div');
+let titugifMax = document.createElement('h4');
+let iconDiv = document.createElement('div');
+
 
 //CONTROL DE SLIDER CON FLECHAS LEFT & RIGHT
 let positionScroll = 1;
@@ -129,17 +141,7 @@ function pedidoTrendings(){
 }
 pedidoTrendings();
 
-//ELEMENTOS PARA VISUALIZAR GIF AL MAX
-let containerX = document.getElementsByClassName('containerX')[0];
-let iconMax = document.querySelectorAll('.max');
-let modal = document.createElement('div');
-let closeMax = document.createElement('a');
-let imgClose = document.createElement('img');
-let containMax = document.createElement('div');
-let gifMax= document.createElement('img');
-let infoDiv = document.createElement('div');
-let titugifMax = document.createElement('h4');
-let iconDiv = document.createElement('div');
+
 
 function maximizarGif(b,url,titulo){
     if(mediaDesktop.matches){

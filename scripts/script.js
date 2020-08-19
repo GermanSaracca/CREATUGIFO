@@ -10,28 +10,20 @@ let nav = document.querySelector('.nav-links');
 let icon = document.getElementById("check");
 let img = document.getElementById('burgerIcon');
 
-//ESTADO DE MODO DARK O LIGHT GUARDADO EN SESSION STORAGO
-let estadoModo = sessionStorage.getItem("themeStatus");
+//ESTADO DE MODO DARK O LIGHT GUARDADO EN LOCAL STORAGE
+let estadoModo = localStorage.getItem("themeStatus");
 
-if(estadoModo == 1){
+//----------CAMBIO A DARK THEME--------------------->>>
+//TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
+let theme = document.querySelector("#light-theme");
 
-  img.src = "./images/burger-noc.svg";
-}
-icon.addEventListener("click",()=>{
-
-  nav.classList.toggle('nav-active');
-
-    if (check.checked == true && estadoModo != 1){
-      img.src = "./images/close.svg";
-    }else if(check.checked == false && estadoModo != 1) {
-      img.src = "./images/burger.svg";
-    }else if(check.checked !== true && estadoModo == 1) {
-      img.src = "./images/burger-noc.svg";
-    }else if(check.checked == true && estadoModo == 1){
-      img.src = "./images/button-close-noc.svg";
-    } 
-})
-
+//ELEMENTOS DEL NAV BAR
+let crearGif = document.getElementById('gifCreatorBtn');
+let modoNoche = document.getElementById('modoNoche');
+let logoNav = document.getElementById('logoNav');
+let btnMenu = document.querySelectorAll('.menubtn');
+let navlink = document.getElementsByClassName('nav-links');
+let burger = document.getElementById('burgerIcon');
 
 //  BUSQUEDA DE GIFS ----------------------------------------
 let lupa = document.getElementById('search');
@@ -53,11 +45,101 @@ let verMas = document.createElement('div');
 let verMasA = document.createElement('a');
 verMas.className = 'verMas';
 verMasA.className = 'verMasA';
-
 contenedor.appendChild(grillaGifs);
 contenedor.appendChild(verMas);
 verMas.appendChild(verMasA);
 verMasA.textContent = 'VER MÁS';
+
+//MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
+let makeGif = document.getElementById('makegif');
+let divgifCreatorBtn = document.getElementById('gif_creator');
+
+makeGif.addEventListener('mouseover',()=>{
+  if(estadoModo != 1){
+    crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');
+  }else{
+    crearGif.setAttribute('src','./images/button-crear-gifo-black.svg');
+  }
+})
+makeGif.addEventListener('mouseout',()=>{
+  if(estadoModo != 1){
+    crearGif.setAttribute('src','./images/button-crear-gifo.svg');
+  }else{
+    crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');
+  }
+})
+
+
+//SEGUN EL ESTADO DE MODO GUARDADO EN LOCAL APLICO INMEDIATAMENTE SE ABRE LA NUEVA PAGINA
+if(estadoModo == 1){
+
+  theme.href = "styles/dark-main.css";
+  modoDark();
+}else{
+
+  theme.href = "styles/main.css";
+  modoLight();
+}
+
+let themeStatus;
+
+modoNoche.addEventListener('click',()=>{
+
+  if(theme.getAttribute("href") == "styles/main.css"){
+    theme.href = "styles/dark-main.css";
+    themeStatus = 1;
+    localStorage.setItem("themeStatus", themeStatus);
+    modoDark();
+
+  }else{
+
+    theme.href = "styles/main.css";
+    themeStatus = 0;
+    localStorage.setItem("themeStatus", themeStatus);
+    modoLight();
+  }
+  location.reload();
+})
+
+function modoDark(){
+
+  logoNav.setAttribute('src','./images/logo-desktop-modo-noc.svg');
+  crearGif.setAttribute('src','./images/button-crear-gifo-noc.svg');
+  btnMenu[0].textContent = 'Modo Diurno';
+  //MAIN
+  lupa.setAttribute('src',"./images/icon-search-mod-noc.svg");
+
+}
+function modoLight(){
+
+  logoNav.setAttribute('src','./images/logo-desktop.svg');
+  crearGif.setAttribute('src','./images/button-crear-gifo.svg');
+  btnMenu[0].textContent = 'Modo Nocturno';
+  //MAIN
+  lupa.setAttribute('src',"./images/icon-search.svg");
+}
+
+//--------------FIN CAMBIO A DARK THEME----------------------XXX
+
+if(estadoModo == 1){
+
+  img.src = "./images/burger-noc.svg";
+}
+icon.addEventListener("click",()=>{
+
+  nav.classList.toggle('nav-active');
+
+    if (check.checked == true && estadoModo != 1){
+      img.src = "./images/close.svg";
+    }else if(check.checked == false && estadoModo != 1) {
+      img.src = "./images/burger.svg";
+    }else if(check.checked !== true && estadoModo == 1) {
+      img.src = "./images/burger-noc.svg";
+    }else if(check.checked == true && estadoModo == 1){
+      img.src = "./images/button-close-noc.svg";
+    } 
+})
+
 
 let visual = 0;
 //RESETEO EN CASO DE HABER ELEMENTOS MODIFICADOS DINAMICAMENTE AL CLICKEAR EL INPUT DE BUSQUEDA
@@ -561,83 +643,6 @@ function guardaFavoritosResults(url,tit,id,iconFav){
 }
 //----------------------------------------------------------XXX
 
-//----------CAMBIO A DARK THEME--------------------->>>
-//TOMO HOJA DE ESTILO LIGHT THEME(DEFAULT) Y LA GUARDO EN UNA CONSTANTE
-let theme = document.querySelector("#light-theme");
-//ELEMENTOS DEL NAV BAR
-let crearGif = document.getElementById('gifCreatorBtn');
-let modoNoche = document.getElementById('modoNoche');
-let logoNav = document.getElementById('logoNav');
-let btnMenu = document.querySelectorAll('.menubtn');
-let navlink = document.getElementsByClassName('nav-links');
-let burger = document.getElementById('burgerIcon');
 
-//SEGUN EL ESTADO DE MODO GUARDADO EN SESSION APLICO INMEDIATAMENTE SE ABRE LA NUEVA PAGINA
-if(estadoModo == 1){
 
-  theme.href = "styles/dark-main.css";
-  modoDark();
-}else{
 
-  theme.href = "styles/main.css";
-  modoLight();
-}
-
-let themeStatus;
-
-modoNoche.addEventListener('click',()=>{
-
-  if(theme.getAttribute("href") == "styles/main.css"){
-    theme.href = "styles/dark-main.css";
-    themeStatus = 1;
-    sessionStorage.setItem("themeStatus", themeStatus);
-    modoDark();
-
-  }else{
-
-    theme.href = "styles/main.css";
-    themeStatus = 0;
-    sessionStorage.setItem("themeStatus", themeStatus);
-    modoLight();
-  }
-  location.reload();
-})
-
-function modoDark(){
-
-  logoNav.setAttribute('src','./images/logo-desktop-modo-noc.svg');
-  crearGif.setAttribute('src','./images/button-crear-gifo-noc.svg');
-  btnMenu[0].textContent = 'Modo Diurno';
-  //MAIN
-  lupa.setAttribute('src',"./images/icon-search-mod-noc.svg");
-
-}
-function modoLight(){
-
-  logoNav.setAttribute('src','./images/logo-desktop.svg');
-  crearGif.setAttribute('src','./images/button-crear-gifo.svg');
-  btnMenu[0].textContent = 'Modo Nocturno';
-  //MAIN
-  lupa.setAttribute('src',"./images/icon-search.svg");
-}
-
-//--------------FIN CAMBIO A DARK THEME----------------------XXX
-
-//MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>
-let makeGif = document.getElementById('makegif');
-let divgifCreatorBtn = document.getElementById('gif_creator');
-
-makeGif.addEventListener('mouseover',()=>{
-  if(estadoModo != 1){
-    crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');
-  }else{
-    crearGif.setAttribute('src','./images/button-crear-gifo-black.svg');
-  }
-})
-makeGif.addEventListener('mouseout',()=>{
-  if(estadoModo != 1){
-    crearGif.setAttribute('src','./images/button-crear-gifo.svg');
-  }else{
-    crearGif.setAttribute('src','./images/button-crear-gifo-white.svg');
-  }
-})

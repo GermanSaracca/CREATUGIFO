@@ -3,12 +3,8 @@ const APIKEY = "IPDmvhDzm0liJgSooGZzCeivUyTZZ82L";
 let mediaMobile = window.matchMedia("(max-width: 768px)");
 let mediaIpad = window.matchMedia("(min-width: 768px) and (max-width : 1024px)");
 let mediaDesktop = window.matchMedia("(min-width: 1025px)");
-
+let repeat = document.getElementById('repeat');
 let mainCrearGifos = document.getElementById('mainGifos');
-if(mediaMobile.matches || mediaIpad.matches){
-  
-  mainCrearGifos.innerHTML = "";
-}
 
 let video = document.getElementById('video');
 let blueGifo = document.getElementById('blueGifo');
@@ -19,7 +15,7 @@ let hrefGifo = document.getElementById('hrefGifo');
 let downGifo = document.getElementById('dwnGifo');
 let comenzar = document.getElementById('comenzar');
 let grabar = document.getElementById('grabar');
-let repeat = document.getElementById('repeat');
+
 let titleCreate = document.getElementById('title');
 let instructions = document.getElementById('instructions');
 let step1 = document.getElementById('step1');
@@ -58,7 +54,7 @@ if(estadoModo == 1){
 }
 
 icon.addEventListener("click",()=>{
-
+  
   nav.classList.toggle('nav-active');
 
     if (check.checked == true && estadoModo != 1){
@@ -139,7 +135,7 @@ function agregarGifCreado(url,id){
     nuevosGifs.push(nuevoGifCreado);
     return nuevoGifCreado;
 }
-
+//COMIENZO PROCESO DE GRABACION
 comenzar.addEventListener('click',()=>{
     getStreamAndRecord();
     paso1();
@@ -496,9 +492,6 @@ function download(data, strFileName, strMimeType) {
   }
   return true;
 };
-
-
-
 
 
 //MOUSE OVER BOTON DE CREAR GIFOS--------------------------->>>

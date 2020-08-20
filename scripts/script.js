@@ -154,6 +154,7 @@ var globalTimeout = null;
 //INPUT DE BUSQUEDA 
 input_gif.addEventListener("keyup",()=>{
 
+  //DELAY PARA LA BUSQUEDA DE SUGERENCIAS
   if (globalTimeout != null) {
     clearTimeout(globalTimeout);
   }
@@ -164,9 +165,9 @@ input_gif.addEventListener("keyup",()=>{
 
   }, 200);  
 
-
   noResults.classList.remove('displayBlocker');
   verMas.classList.remove('displayNoner');
+
   //GUARDO EL VALOR EN UNA VARIABLE
   let busqueda = input_gif.value;
 
@@ -219,7 +220,7 @@ input_gif.addEventListener("keyup",()=>{
     verMas.classList.remove('displayNoner');
   }
 
-  //INICIA BUSQUEDA CON EL ENTER DE LA BUSQUEDA INGRESADA
+  //INICIA BUSQUEDA DEL INPUT INGRESA CON TECLA ENTER 
   if(event.wich == 13 || event.keyCode == 13 && input_gif.value !== ""){
 
     grillaGifs.innerHTML = "";

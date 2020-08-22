@@ -7,5 +7,5 @@ Uso de la libreria RTC para grabar un video en formato gif.
 
 Te invito a que veas las funcionalidades de mi pagina =>  https://germansaracca.github.io/GIFOS/  
 
-*Modo mobile para crea gifs aun faltan detalles.
+*Modo mobile: para 'crear gifs' aun faltan detalles pero funcionando.
 

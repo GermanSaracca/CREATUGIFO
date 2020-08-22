@@ -6,7 +6,7 @@ Uso de la libreria RTC para grabar video.
 
 Te invito a que veas las funcionalidades de mi pagina =>  https://germansaracca.github.io/GIFOS/  
 
-*Modo mobile: para 'crear gifs' aun faltan detalles pero funcionando.
+Modo mobile: para 'crear gifs' aun faltan detalles pero funcionando.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # GIFOS
 This was the second term project from the Web Full Stack Developer course at Acamica (https://www.acamica.com/).
@@ -16,7 +16,7 @@ Use of RTC library to record video.
 
 I invite you to see the functionalities of my site => https://germansaracca.github.io/GIFOS/ 
 
-*Mobile mode : some details missing at ´create Gifs´ section.
+Mobile mode : some details missing at ´create Gifs´ section.
 
  
 
